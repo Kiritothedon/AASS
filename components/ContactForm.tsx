@@ -10,17 +10,21 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState('')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }))
   }
 
@@ -58,10 +62,13 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
         <div className="bg-secondary-gray rounded-lg shadow-lg p-8 border border-secondary-dark max-w-md mx-auto">
           <div className="flex items-center justify-center space-x-2 text-primary-gold mb-4">
             <Check className="h-8 w-8" />
-            <h3 className="text-xl font-semibold text-primary-white">Message Sent!</h3>
+            <h3 className="text-xl font-semibold text-primary-white">
+              Message Sent!
+            </h3>
           </div>
           <p className="text-secondary-muted mb-6">
-            Thanks — your message was sent. We'll respond within 3–5 business days.
+            Thanks — your message was sent. We'll respond within 3–5 business
+            days.
           </p>
           <button
             onClick={() => setIsSubmitted(false)}
@@ -76,7 +83,10 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
 
   return (
     <div className={className}>
-      <form onSubmit={handleSubmit} className="bg-secondary-gray rounded-lg shadow-lg p-8 border border-secondary-dark max-w-2xl mx-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-secondary-gray rounded-lg shadow-lg p-8 border border-secondary-dark max-w-2xl mx-auto"
+      >
         <h3 className="text-2xl font-semibold text-primary-white mb-6 font-serif">
           Send us a message
         </h3>
@@ -90,7 +100,10 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-primary-white mb-2">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-primary-white mb-2"
+            >
               Full Name *
             </label>
             <input
@@ -104,9 +117,12 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
               placeholder="Your full name"
             />
           </div>
-          
+
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-primary-white mb-2">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-primary-white mb-2"
+            >
               Email Address *
             </label>
             <input
@@ -123,7 +139,10 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="subject" className="block text-sm font-medium text-primary-white mb-2">
+          <label
+            htmlFor="subject"
+            className="block text-sm font-medium text-primary-white mb-2"
+          >
             Subject *
           </label>
           <input
@@ -139,7 +158,10 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="message" className="block text-sm font-medium text-primary-white mb-2">
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-primary-white mb-2"
+          >
             Message *
           </label>
           <textarea

@@ -12,7 +12,11 @@ export default function AboutPage() {
               </h1>
               <div className="w-24 h-1 bg-primary-gold mx-auto mb-8"></div>
               <p className="text-xl text-secondary-muted leading-relaxed max-w-3xl mx-auto">
-                The African American Safety Society (AASS) exists to further Black progress through business and technology, with the ultimate aim of making our communities safer. We release software and tools that strengthen economic power and reduce risks. This site offers only a glimpse into our mission.
+                The African American Safety Society (AASS) exists to further
+                Black progress through business and technology, with the
+                ultimate aim of making our communities safer. We release
+                software and tools that strengthen economic power and reduce
+                risks. This site offers only a glimpse into our mission.
               </p>
             </div>
           </div>

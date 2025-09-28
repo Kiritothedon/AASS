@@ -32,7 +32,7 @@ export default function Hero({
       <div className="absolute inset-0 z-0">
         <Image
           src={backgroundImage}
-          alt="Community meeting"
+          alt="Technology and safety"
           fill
           className="object-cover"
           priority

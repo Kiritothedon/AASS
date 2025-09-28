@@ -22,17 +22,20 @@ const features = [
   {
     icon: Building2,
     title: 'Business Incubator',
-    description: 'Seed funding, mentorship, and go-to-market support for Black founders building safety-focused businesses.',
+    description:
+      'Seed funding, mentorship, and go-to-market support for Black founders building safety-focused businesses.',
   },
   {
     icon: Code,
     title: 'Tech Training',
-    description: 'Coding bootcamps and technology skills training for at-risk populations, with job placement support.',
+    description:
+      'Coding bootcamps and technology skills training for at-risk populations, with job placement support.',
   },
   {
     icon: Shield,
     title: 'Safety Software',
-    description: 'Community safety apps, reporting systems, and analytics tools designed for neighborhood protection.',
+    description:
+      'Community safety apps, reporting systems, and analytics tools designed for neighborhood protection.',
   },
 ]
 
@@ -41,7 +44,7 @@ export default function HomePage({ latestPosts }: HomePageProps) {
     <>
       {/* Hero Section */}
       <Hero
-        title="Building Safety Through Black Business & Technology"
+        title="Building Safety Through Business & Technology"
         subtitle="AASS creates software and initiatives that make communities safer."
         backgroundImage="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1920&h=1080&fit=crop&crop=center"
         primaryCTA={{
@@ -66,7 +69,9 @@ export default function HomePage({ latestPosts }: HomePageProps) {
                 Our Mission
               </h3>
               <p className="text-secondary-muted leading-relaxed">
-                We exist to further Black progress through business and technology, with the ultimate aim of making our communities safer.
+                We exist to further Black progress through business and
+                technology, with the ultimate aim of making our communities
+                safer.
               </p>
               <div className="flex items-center text-primary-gold mt-4 group-hover:translate-x-1 transition-transform">
                 <span className="text-sm font-semibold">Learn More</span>
@@ -82,7 +87,8 @@ export default function HomePage({ latestPosts }: HomePageProps) {
                 Our Software
               </h3>
               <p className="text-secondary-muted leading-relaxed">
-                Watchtower and other safety tools designed to enhance community protection and resilience.
+                Watchtower and other safety tools designed to enhance community
+                protection and resilience.
               </p>
               <div className="flex items-center text-primary-gold mt-4 group-hover:translate-x-1 transition-transform">
                 <span className="text-sm font-semibold">View Software</span>
@@ -98,7 +104,8 @@ export default function HomePage({ latestPosts }: HomePageProps) {
                 Insights
               </h3>
               <p className="text-secondary-muted leading-relaxed">
-                Research, analysis, and updates from our work in community safety and technology.
+                Research, analysis, and updates from our work in community
+                safety and technology.
               </p>
               <div className="flex items-center text-primary-gold mt-4 group-hover:translate-x-1 transition-transform">
                 <span className="text-sm font-semibold">Read Insights</span>
@@ -117,7 +124,8 @@ export default function HomePage({ latestPosts }: HomePageProps) {
               Latest Insights
             </h2>
             <p className="text-xl text-secondary-muted max-w-3xl mx-auto">
-              Stay updated with our latest research, program updates, and community stories.
+              Stay updated with our latest research, program updates, and
+              community stories.
             </p>
           </div>
 
@@ -147,9 +155,10 @@ export default function HomePage({ latestPosts }: HomePageProps) {
               Stay Connected
             </h2>
             <p className="text-xl text-secondary-muted mb-12">
-              Join our newsletter for updates on our initiatives, software releases, and community impact.
+              Join our newsletter for updates on our initiatives, software
+              releases, and community impact.
             </p>
-            
+
             <div className="max-w-md mx-auto">
               <div className="flex">
                 <input
@@ -171,7 +180,7 @@ export default function HomePage({ latestPosts }: HomePageProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const latestPosts = await getBlogPosts()
-  
+
   return {
     props: {
       latestPosts: latestPosts.slice(0, 3),

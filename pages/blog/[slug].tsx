@@ -30,7 +30,10 @@ interface BlogPostPageProps {
   }>
 }
 
-export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) {
+export default function BlogPostPage({
+  post,
+  relatedPosts,
+}: BlogPostPageProps) {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -54,8 +57,8 @@ export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) 
         <Container>
           <div className="py-16">
             {/* Back Button */}
-            <Link 
-              href="/blog" 
+            <Link
+              href="/blog"
               className="inline-flex items-center text-primary-gold hover:text-opacity-80 transition-colors mb-8"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -67,7 +70,7 @@ export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) 
               <h1 className="text-4xl md:text-5xl font-bold text-primary-white font-serif mb-6 leading-tight">
                 {post.title}
               </h1>
-              
+
               <div className="flex flex-wrap items-center gap-6 text-secondary-muted mb-8">
                 <div className="flex items-center">
                   <User className="h-4 w-4 mr-2" />
@@ -78,7 +81,7 @@ export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) 
                   {new Date(post.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
-                    day: 'numeric'
+                    day: 'numeric',
                   })}
                 </div>
                 {post.tags.length > 0 && (
@@ -121,11 +124,14 @@ export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) 
                         {relatedPost.excerpt}
                       </p>
                       <div className="text-sm text-secondary-muted">
-                        {new Date(relatedPost.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
+                        {new Date(relatedPost.date).toLocaleDateString(
+                          'en-US',
+                          {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          }
+                        )}
                       </div>
                     </Link>
                   ))}
@@ -155,11 +161,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug as string
   const post = await getBlogPost(slug)
   const allPosts = await getBlogPosts()
-  
+
   // Get related posts (exclude current post)
-  const relatedPosts = allPosts
-    .filter((p) => p.slug !== slug)
-    .slice(0, 3)
+  const relatedPosts = allPosts.filter((p) => p.slug !== slug).slice(0, 3)
 
   if (!post) {
     return {

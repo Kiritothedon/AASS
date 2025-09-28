@@ -24,10 +24,13 @@ export default function Navbar() {
         <div className="container-custom">
           <div className="flex justify-between items-center">
             <p className="text-secondary-muted">
-              AASS — Building safety through Black business & technology
+              Sign up for our newsletter to get updates and become an early adopter of our new software
             </p>
-            <Link href="/about" className="text-primary-gold hover:text-opacity-80 transition-colors">
-              Learn more
+            <Link
+              href="#newsletter"
+              className="text-primary-gold hover:text-opacity-80 transition-colors"
+            >
+              Subscribe
             </Link>
           </div>
         </div>

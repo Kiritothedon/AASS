@@ -12,7 +12,8 @@ export default function Footer() {
             Building safety through Black business & technology.
           </p>
           <p className="text-secondary-muted text-xs">
-            © {new Date().getFullYear()} African American Safety Society. All rights reserved.
+            © {new Date().getFullYear()} African American Safety Society. All
+            rights reserved.
           </p>
         </div>
       </div>

@@ -22,11 +22,11 @@ interface BlogPageProps {
 export default function BlogPage({ posts }: BlogPageProps) {
   return (
     <div className="min-h-screen bg-primary-black">
-      <PageHeader 
-        title="Insights" 
+      <PageHeader
+        title="Insights"
         subtitle="Research, analysis, and updates from our work in community safety."
       />
-      
+
       <Container>
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -42,7 +42,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getBlogPosts()
-  
+
   return {
     props: {
       posts,

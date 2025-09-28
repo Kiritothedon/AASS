@@ -21,12 +21,14 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     })
   }
 
   return (
-    <article className={`card card-hover h-full flex flex-col relative ${featured ? 'md:col-span-2' : ''}`}>
+    <article
+      className={`card card-hover h-full flex flex-col relative ${featured ? 'md:col-span-2' : ''}`}
+    >
       {/* Featured badge */}
       {post.featured && (
         <div className="absolute -top-3 -right-3 bg-primary-gold text-primary-black px-3 py-1 rounded-full text-sm font-semibold">
@@ -35,7 +37,9 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
       )}
 
       <div className="flex-1">
-        <h3 className={`font-semibold text-primary-white mb-3 ${featured ? 'text-2xl' : 'text-xl'}`}>
+        <h3
+          className={`font-semibold text-primary-white mb-3 ${featured ? 'text-2xl' : 'text-xl'}`}
+        >
           <Link
             href={`/blog/${post.slug}`}
             className="hover:text-primary-gold transition-colors duration-200"
@@ -43,8 +47,10 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
             {post.title}
           </Link>
         </h3>
-        
-        <p className={`text-secondary-muted mb-4 leading-relaxed ${featured ? 'text-lg' : ''}`}>
+
+        <p
+          className={`text-secondary-muted mb-4 leading-relaxed ${featured ? 'text-lg' : ''}`}
+        >
           {post.excerpt}
         </p>
 
