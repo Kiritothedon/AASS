@@ -24,7 +24,8 @@ export default function Navbar() {
         <div className="container-custom">
           <div className="flex justify-between items-center">
             <p className="text-secondary-muted">
-              Sign up for our newsletter to get updates and become an early adopter of our new software
+              Sign up for our newsletter to get updates and become an early
+              adopter of our new software
             </p>
             <Link
               href="#newsletter"

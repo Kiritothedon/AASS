@@ -24,7 +24,7 @@ export default function Hero({
   primaryCTA,
   secondaryCTA,
   backgroundImage = '/images/hero-community.jpg',
-  children
+  children,
 }: HeroProps) {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
@@ -32,7 +32,7 @@ export default function Hero({
       <div className="absolute inset-0 z-0">
         <Image
           src={backgroundImage}
-          alt="Technology and safety"
+          alt=""
           fill
           className="object-cover"
           priority
@@ -75,11 +75,7 @@ export default function Hero({
           )}
 
           {/* Additional content */}
-          {children && (
-            <div className="mt-8">
-              {children}
-            </div>
-          )}
+          {children && <div className="mt-8">{children}</div>}
         </div>
       </div>
     </section>
