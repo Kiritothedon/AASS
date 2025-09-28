@@ -32,7 +32,8 @@ export default function InitiativesPage({ initiatives }: InitiativesPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {initiatives.map((initiative) => {
               // Import the icon component dynamically
-              const IconComponent = require('lucide-react')[initiative.icon as keyof typeof require('lucide-react')]
+              const lucideReact = require('lucide-react')
+              const IconComponent = lucideReact[initiative.icon] as any
               return (
                 <InitiativeCard
                   key={initiative.id}
@@ -55,7 +56,8 @@ export default function InitiativesPage({ initiatives }: InitiativesPageProps) {
 
             <div className="space-y-12">
               {initiatives.map((initiative) => {
-                const IconComponent = require('lucide-react')[initiative.icon as keyof typeof require('lucide-react')]
+                const lucideReact = require('lucide-react')
+                const IconComponent = lucideReact[initiative.icon] as any
                 return (
                   <div key={initiative.id} id={initiative.id} className="card">
                     <div className="flex items-start space-x-6">

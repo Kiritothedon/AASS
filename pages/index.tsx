@@ -78,7 +78,8 @@ export default function HomePage({ featuredInitiatives, latestPosts }: HomePageP
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {featuredInitiatives.slice(0, 3).map((initiative) => {
               // Import the icon component dynamically
-              const IconComponent = require('lucide-react')[initiative.icon as keyof typeof require('lucide-react')]
+              const lucideReact = require('lucide-react')
+              const IconComponent = lucideReact[initiative.icon] as any
               return (
                 <InitiativeCard
                   key={initiative.id}

@@ -5,6 +5,17 @@ import ContactForm from '../components/ContactForm'
 import Container from '../components/Container'
 import { Shield, Users, BarChart3, MapPin, Smartphone, Lock } from 'lucide-react'
 
+const watchtowerFeatures = [
+  'Real-time incident reporting and community alerts',
+  'Privacy-first design with community data control',
+  'Integration with local law enforcement (when appropriate)',
+  'Neighborhood watch coordination tools',
+  'Safety hotline mapping and resource directories',
+  'Community analytics dashboard',
+  'Mobile-first responsive design',
+  'End-to-end encrypted communications'
+]
+
 interface SoftwarePageProps {
   software: Array<{
     id: string
@@ -39,16 +50,6 @@ export default function SoftwarePage({ software }: SoftwarePageProps) {
     }
   ]
 
-  const watchtowerFeatures = [
-    'Real-time incident reporting and community alerts',
-    'Privacy-first design with community data control',
-    'Integration with local law enforcement (when appropriate)',
-    'Neighborhood watch coordination tools',
-    'Safety hotline mapping and resource directories',
-    'Community analytics dashboard',
-    'Mobile-first responsive design',
-    'End-to-end encrypted communications'
-  ]
 
   return (
     <>

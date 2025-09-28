@@ -9,7 +9,7 @@ interface Initiative {
   details: string
   icon: string
   stats?: {
-    [key: string]: string
+    [key: string]: string | number | undefined
   }
   cta: {
     label: string
