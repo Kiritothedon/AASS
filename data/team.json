@@ -1,0 +1,45 @@
+[
+  {
+    "id": "dr-maya-johnson",
+    "name": "Dr. Maya Johnson",
+    "title": "Executive Director",
+    "bio": "Dr. Johnson brings 15 years of experience in community organizing and public policy. She holds a PhD in Urban Planning from MIT and has led safety initiatives in major metropolitan areas.",
+    "image": "/images/team/maya-johnson.jpg",
+    "linkedin": "https://linkedin.com/in/maya-johnson",
+    "twitter": "https://twitter.com/maya_johnson"
+  },
+  {
+    "id": "marcus-williams",
+    "name": "Marcus Williams",
+    "title": "Chief Technology Officer",
+    "bio": "Marcus is a former Google engineer with expertise in civic technology and community safety platforms. He founded two successful tech startups focused on social impact.",
+    "image": "/images/team/marcus-williams.jpg",
+    "linkedin": "https://linkedin.com/in/marcus-williams",
+    "github": "https://github.com/marcuswilliams"
+  },
+  {
+    "id": "dr-keisha-brown",
+    "name": "Dr. Keisha Brown",
+    "title": "Director of Research",
+    "bio": "Dr. Brown is a data scientist and criminologist specializing in community safety analytics. She has published extensively on neighborhood safety interventions and their effectiveness.",
+    "image": "/images/team/keisha-brown.jpg",
+    "linkedin": "https://linkedin.com/in/keisha-brown",
+    "scholar": "https://scholar.google.com/citations?user=keisha-brown"
+  },
+  {
+    "id": "james-mitchell",
+    "name": "James Mitchell",
+    "title": "Program Director",
+    "bio": "James oversees our business incubator and training programs. He has a background in venture capital and has helped launch over 50 Black-owned businesses.",
+    "image": "/images/team/james-mitchell.jpg",
+    "linkedin": "https://linkedin.com/in/james-mitchell"
+  },
+  {
+    "id": "sarah-davis",
+    "name": "Sarah Davis",
+    "title": "Community Outreach Coordinator",
+    "bio": "Sarah manages our community partnerships and workshop programs. She has deep roots in community organizing and brings 10 years of experience in grassroots safety initiatives.",
+    "image": "/images/team/sarah-davis.jpg",
+    "linkedin": "https://linkedin.com/in/sarah-davis"
+  }
+]

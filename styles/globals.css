@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-primary-black;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-gold text-primary-black px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-opacity-90 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-gold focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-primary-gold text-primary-gold px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-primary-gold hover:text-primary-black focus:outline-none focus:ring-2 focus:ring-primary-gold focus:ring-offset-2;
+  }
+  
+  .btn-alt {
+    @apply bg-primary-green text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-opacity-90 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all duration-300 p-6;
+  }
+  
+  .card-hover {
+    @apply transform hover:-translate-y-1 transition-all duration-300;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-gold to-primary-green bg-clip-text text-transparent;
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(11, 11, 11, 0.8) 0%, rgba(10, 96, 52, 0.6) 100%);
+  }
+  
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-gold focus:ring-offset-2;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

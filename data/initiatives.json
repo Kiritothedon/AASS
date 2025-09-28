@@ -1,0 +1,82 @@
+[
+  {
+    "id": "incubator",
+    "title": "Business Incubator",
+    "summary": "Seed funding, mentorship, and go-to-market support for Black founders.",
+    "details": "Our Business Incubator program provides comprehensive support for Black entrepreneurs looking to build scalable, safety-focused businesses. We offer seed funding up to $50,000, 12 months of intensive mentorship from successful Black business leaders, and access to our network of investors and partners. The program includes weekly workshops, pitch coaching, and go-to-market strategy development. We focus on businesses that address community safety, economic development, and social impact in Black communities.",
+    "icon": "Building2",
+    "stats": {
+      "graduates": 45,
+      "funding": "$2.3M",
+      "successRate": "78%"
+    },
+    "cta": {
+      "label": "Apply Now",
+      "href": "/initiatives#incubator"
+    }
+  },
+  {
+    "id": "tech-training",
+    "title": "Tech Training",
+    "summary": "Coding bootcamps & reskilling for at-risk populations.",
+    "details": "Our Tech Training program offers intensive coding bootcamps and technology skills training specifically designed for Black individuals facing economic barriers. We provide full scholarships, job placement assistance, and ongoing career support. The program includes full-stack web development, data analysis, cybersecurity fundamentals, and digital marketing. Graduates receive industry-recognized certifications and access to our employer network for guaranteed job interviews.",
+    "icon": "Code",
+    "stats": {
+      "graduates": 156,
+      "placement": "92%",
+      "salary": "+$45K"
+    },
+    "cta": {
+      "label": "Learn More",
+      "href": "/initiatives#tech-training"
+    }
+  },
+  {
+    "id": "safety-apps",
+    "title": "Community Safety Apps",
+    "summary": "Apps for neighborhood safety, hotline mapping & incident reporting.",
+    "details": "We develop and deploy community safety applications that help neighborhoods monitor, report, and respond to safety concerns. Our flagship app, Watchtower, provides real-time incident reporting, safety hotline mapping, community alerts, and coordination tools for neighborhood watch groups. The platform includes privacy-first design, encrypted communications, and integration with local law enforcement when appropriate.",
+    "icon": "Shield",
+    "stats": {
+      "users": "12K+",
+      "communities": 89,
+      "incidents": "2.1K"
+    },
+    "cta": {
+      "label": "View Apps",
+      "href": "/software"
+    }
+  },
+  {
+    "id": "research-policy",
+    "title": "Research & Policy",
+    "summary": "Data-driven analysis on safety & economic outcomes for Black communities.",
+    "details": "Our Research & Policy division conducts rigorous analysis of safety trends, economic outcomes, and policy impacts in Black communities. We publish quarterly reports, policy briefs, and data visualizations that inform community leaders, policymakers, and advocacy organizations. Our research covers topics including neighborhood safety metrics, economic opportunity gaps, technology access disparities, and the effectiveness of community-based safety interventions.",
+    "icon": "BarChart3",
+    "stats": {
+      "reports": 24,
+      "citations": 156,
+      "policies": 12
+    },
+    "cta": {
+      "label": "View Research",
+      "href": "/research"
+    }
+  },
+  {
+    "id": "workshops",
+    "title": "Public Workshops",
+    "summary": "Workshops, town halls, and safety audits for community engagement.",
+    "details": "We organize and facilitate public workshops, town halls, and community safety audits to engage residents in safety planning and implementation. Our workshops cover topics such as digital safety, emergency preparedness, neighborhood organizing, and conflict resolution. We work with local community organizations, schools, and religious institutions to ensure broad participation and cultural sensitivity.",
+    "icon": "Users",
+    "stats": {
+      "workshops": 89,
+      "participants": "3.2K",
+      "communities": 45
+    },
+    "cta": {
+      "label": "Attend Workshop",
+      "href": "/events"
+    }
+  }
+]
