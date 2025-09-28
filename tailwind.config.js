@@ -9,13 +9,19 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          black: '#0B0B0B',
-          gold: '#D4AF37',
-          green: '#0A6034',
+          black: '#0A0A0A',
+          gold: '#C7A740',
+          white: '#F4F4F4',
         },
         secondary: {
-          gray: '#F4F2EE',
-          muted: '#6B6B6B',
+          gray: '#121212',
+          muted: '#A1A1A1',
+          dark: '#181818',
+        },
+        accent: {
+          blue: '#3A3A3A',
+          green: '#C7A740',
+          red: '#C7A740',
         },
       },
       fontFamily: {

@@ -26,7 +26,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
   }
 
   return (
-    <article className={`card card-hover h-full flex flex-col ${featured ? 'md:col-span-2' : ''}`}>
+    <article className={`card card-hover h-full flex flex-col relative ${featured ? 'md:col-span-2' : ''}`}>
       {/* Featured badge */}
       {post.featured && (
         <div className="absolute -top-3 -right-3 bg-primary-gold text-primary-black px-3 py-1 rounded-full text-sm font-semibold">
@@ -35,7 +35,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
       )}
 
       <div className="flex-1">
-        <h3 className={`font-semibold text-primary-black mb-3 ${featured ? 'text-2xl' : 'text-xl'}`}>
+        <h3 className={`font-semibold text-primary-white mb-3 ${featured ? 'text-2xl' : 'text-xl'}`}>
           <Link
             href={`/blog/${post.slug}`}
             className="hover:text-primary-gold transition-colors duration-200"
@@ -54,7 +54,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-1 bg-secondary-gray text-secondary-muted text-xs rounded-full"
+                className="px-2 py-1 bg-secondary-dark text-secondary-muted text-xs rounded-full"
               >
                 {tag}
               </span>
@@ -64,7 +64,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
       </div>
 
       {/* Meta */}
-      <div className="flex items-center justify-between text-sm text-secondary-muted pt-4 border-t border-gray-200">
+      <div className="flex items-center justify-between text-sm text-secondary-muted pt-4 border-t border-secondary-dark">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-1">
             <Calendar className="h-4 w-4" />

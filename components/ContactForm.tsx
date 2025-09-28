@@ -55,10 +55,10 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
   if (isSubmitted) {
     return (
       <div className={`${className} text-center`}>
-        <div className="card max-w-md mx-auto">
-          <div className="flex items-center justify-center space-x-2 text-green-600 mb-4">
+        <div className="bg-secondary-gray rounded-lg shadow-lg p-8 border border-secondary-dark max-w-md mx-auto">
+          <div className="flex items-center justify-center space-x-2 text-primary-gold mb-4">
             <Check className="h-8 w-8" />
-            <h3 className="text-xl font-semibold">Message Sent!</h3>
+            <h3 className="text-xl font-semibold text-primary-white">Message Sent!</h3>
           </div>
           <p className="text-secondary-muted mb-6">
             Thanks — your message was sent. We'll respond within 3–5 business days.
@@ -76,13 +76,13 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
 
   return (
     <div className={className}>
-      <form onSubmit={handleSubmit} className="card max-w-2xl mx-auto">
-        <h3 className="text-2xl font-semibold text-primary-black mb-6">
+      <form onSubmit={handleSubmit} className="bg-secondary-gray rounded-lg shadow-lg p-8 border border-secondary-dark max-w-2xl mx-auto">
+        <h3 className="text-2xl font-semibold text-primary-white mb-6 font-serif">
           Send us a message
         </h3>
 
         {error && (
-          <div className="flex items-center space-x-2 text-red-600 bg-red-50 p-4 rounded-lg mb-6">
+          <div className="flex items-center space-x-2 text-red-400 bg-red-900 bg-opacity-20 p-4 rounded-lg mb-6 border border-red-800">
             <AlertCircle className="h-5 w-5" />
             <span>{error}</span>
           </div>
@@ -90,7 +90,7 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-primary-black mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-primary-white mb-2">
               Full Name *
             </label>
             <input
@@ -100,12 +100,13 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-gold focus:border-transparent"
+              className="w-full px-4 py-3 bg-secondary-dark border border-secondary-muted rounded-lg text-primary-white placeholder-secondary-muted focus:ring-2 focus:ring-primary-gold focus:border-transparent transition-colors"
+              placeholder="Your full name"
             />
           </div>
-
+          
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-primary-black mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-primary-white mb-2">
               Email Address *
             </label>
             <input
@@ -115,36 +116,30 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-gold focus:border-transparent"
+              className="w-full px-4 py-3 bg-secondary-dark border border-secondary-muted rounded-lg text-primary-white placeholder-secondary-muted focus:ring-2 focus:ring-primary-gold focus:border-transparent transition-colors"
+              placeholder="your.email@example.com"
             />
           </div>
         </div>
 
         <div className="mb-6">
-          <label htmlFor="subject" className="block text-sm font-medium text-primary-black mb-2">
+          <label htmlFor="subject" className="block text-sm font-medium text-primary-white mb-2">
             Subject *
           </label>
-          <select
+          <input
+            type="text"
             id="subject"
             name="subject"
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-gold focus:border-transparent"
-          >
-            <option value="">Select a subject</option>
-            <option value="general">General Inquiry</option>
-            <option value="partnership">Partnership Opportunity</option>
-            <option value="media">Media & Press</option>
-            <option value="volunteer">Volunteer</option>
-            <option value="donation">Donation</option>
-            <option value="program">Program Information</option>
-            <option value="other">Other</option>
-          </select>
+            className="w-full px-4 py-3 bg-secondary-dark border border-secondary-muted rounded-lg text-primary-white placeholder-secondary-muted focus:ring-2 focus:ring-primary-gold focus:border-transparent transition-colors"
+            placeholder="What's this about?"
+          />
         </div>
 
         <div className="mb-6">
-          <label htmlFor="message" className="block text-sm font-medium text-primary-black mb-2">
+          <label htmlFor="message" className="block text-sm font-medium text-primary-white mb-2">
             Message *
           </label>
           <textarea
@@ -154,19 +149,19 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-gold focus:border-transparent resize-vertical"
-            placeholder="Tell us how we can help..."
+            className="w-full px-4 py-3 bg-secondary-dark border border-secondary-muted rounded-lg text-primary-white placeholder-secondary-muted focus:ring-2 focus:ring-primary-gold focus:border-transparent transition-colors resize-vertical"
+            placeholder="Tell us more about your inquiry..."
           />
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="btn-primary w-full inline-flex items-center justify-center space-x-2"
+          className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <>
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary-black"></div>
+              <div className="animate-spin rounded-full h-4 w-4 border-2 border-primary-black border-t-transparent" />
               <span>Sending...</span>
             </>
           ) : (
@@ -176,10 +171,6 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
             </>
           )}
         </button>
-
-        <p className="text-xs text-secondary-muted mt-4 text-center">
-          By submitting this form, you agree to our privacy policy and terms of service.
-        </p>
       </form>
     </div>
   )

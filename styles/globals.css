@@ -10,7 +10,7 @@
   }
   
   body {
-    @apply bg-white text-primary-black;
+    @apply bg-primary-black text-primary-white;
     font-feature-settings: 'cv11', 'ss01';
     font-variation-settings: 'opsz' 32;
   }
@@ -24,19 +24,19 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-gold text-primary-black px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-opacity-90 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-gold focus:ring-offset-2;
+    @apply bg-primary-gold text-primary-black px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-primary-gold focus:ring-offset-2 focus:ring-offset-primary-black;
   }
   
   .btn-secondary {
-    @apply border-2 border-primary-gold text-primary-gold px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-primary-gold hover:text-primary-black focus:outline-none focus:ring-2 focus:ring-primary-gold focus:ring-offset-2;
+    @apply border border-primary-gold text-primary-gold px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-primary-gold hover:text-primary-black focus:outline-none focus:ring-2 focus:ring-primary-gold focus:ring-offset-2 focus:ring-offset-primary-black;
   }
   
   .btn-alt {
-    @apply bg-primary-green text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-opacity-90 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2;
+    @apply bg-accent-blue text-primary-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-primary-black;
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all duration-300 p-6;
+    @apply bg-secondary-gray border border-secondary-dark rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-6;
   }
   
   .card-hover {
@@ -52,11 +52,11 @@
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-gold to-primary-green bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-gold to-primary-gold bg-clip-text text-transparent;
   }
   
   .hero-gradient {
-    background: linear-gradient(135deg, rgba(11, 11, 11, 0.8) 0%, rgba(10, 96, 52, 0.6) 100%);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(18, 18, 18, 0.8) 100%);
   }
   
   .focus-ring {

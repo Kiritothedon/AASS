@@ -38,31 +38,47 @@ function rateLimit(ip: string): boolean {
 function validateFormData(data: any): { isValid: boolean; errors: string[] } {
   const errors: string[] = []
 
-  if (!data.name || typeof data.name !== 'string' || data.name.trim().length < 2) {
+  if (
+    !data.name ||
+    typeof data.name !== 'string' ||
+    data.name.trim().length < 2
+  ) {
     errors.push('Name is required and must be at least 2 characters long')
   }
 
-  if (!data.email || typeof data.email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+  if (
+    !data.email ||
+    typeof data.email !== 'string' ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)
+  ) {
     errors.push('Valid email address is required')
   }
 
-  if (!data.subject || typeof data.subject !== 'string' || data.subject.trim().length < 3) {
+  if (
+    !data.subject ||
+    typeof data.subject !== 'string' ||
+    data.subject.trim().length < 3
+  ) {
     errors.push('Subject is required and must be at least 3 characters long')
   }
 
-  if (!data.message || typeof data.message !== 'string' || data.message.trim().length < 10) {
+  if (
+    !data.message ||
+    typeof data.message !== 'string' ||
+    data.message.trim().length < 10
+  ) {
     errors.push('Message is required and must be at least 10 characters long')
   }
 
   return {
     isValid: errors.length === 0,
-    errors
+    errors,
   }
 }
 
 async function sendEmail(data: ContactFormData): Promise<boolean> {
   const contactEmail = process.env.AASS_CONTACT_EMAIL || 'contact@aass.org'
-  
+
   const emailContent = `
 New contact form submission from AASS website:
 
@@ -81,13 +97,13 @@ This message was sent from the AASS website contact form.
     // Try SendGrid first
     if (process.env.SENDGRID_API_KEY) {
       sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-      
+
       const msg = {
         to: contactEmail,
         from: process.env.SENDGRID_FROM_EMAIL || 'noreply@aass.org',
         subject: `Contact Form: ${data.subject}`,
         text: emailContent,
-        html: emailContent.replace(/\n/g, '<br>')
+        html: emailContent.replace(/\n/g, '<br>'),
       }
 
       await sgMail.send(msg)
@@ -95,15 +111,19 @@ This message was sent from the AASS website contact form.
     }
 
     // Fallback to SMTP
-    if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    if (
+      process.env.SMTP_HOST &&
+      process.env.SMTP_USER &&
+      process.env.SMTP_PASS
+    ) {
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: parseInt(process.env.SMTP_PORT || '587'),
         secure: process.env.SMTP_PORT === '465',
         auth: {
           user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS
-        }
+          pass: process.env.SMTP_PASS,
+        },
       })
 
       await transporter.sendMail({
@@ -111,7 +131,7 @@ This message was sent from the AASS website contact form.
         to: contactEmail,
         subject: `Contact Form: ${data.subject}`,
         text: emailContent,
-        html: emailContent.replace(/\n/g, '<br>')
+        html: emailContent.replace(/\n/g, '<br>'),
       })
       return true
     }
@@ -126,7 +146,7 @@ This message was sent from the AASS website contact form.
 function saveToFile(data: ContactFormData): boolean {
   try {
     const messagesPath = path.join(process.cwd(), 'data', 'messages.json')
-    
+
     // Ensure directory exists
     const dir = path.dirname(messagesPath)
     if (!fs.existsSync(dir)) {
@@ -144,9 +164,9 @@ function saveToFile(data: ContactFormData): boolean {
     const message = {
       id: Date.now().toString(),
       timestamp: new Date().toISOString(),
-      ...data
+      ...data,
     }
-    
+
     messages.push(message)
 
     // Save back to file
@@ -158,26 +178,32 @@ function saveToFile(data: ContactFormData): boolean {
   }
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
   try {
     // Rate limiting
-    const clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'unknown'
+    const clientIP =
+      req.headers['x-forwarded-for'] ||
+      req.connection.remoteAddress ||
+      'unknown'
     if (!rateLimit(clientIP as string)) {
-      return res.status(429).json({ 
-        error: 'Too many requests. Please try again later.' 
+      return res.status(429).json({
+        error: 'Too many requests. Please try again later.',
       })
     }
 
     // Validate request body
     const { isValid, errors } = validateFormData(req.body)
     if (!isValid) {
-      return res.status(400).json({ 
-        error: 'Validation failed', 
-        details: errors 
+      return res.status(400).json({
+        error: 'Validation failed',
+        details: errors,
       })
     }
 
@@ -185,41 +211,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       name: req.body.name.trim(),
       email: req.body.email.trim(),
       subject: req.body.subject.trim(),
-      message: req.body.message.trim()
+      message: req.body.message.trim(),
     }
 
     // Try to send email first
     const emailSent = await sendEmail(formData)
-    
+
     if (emailSent) {
-      return res.status(200).json({ 
-        success: true, 
+      return res.status(200).json({
+        success: true,
         message: 'Message sent successfully',
-        method: 'email'
+        method: 'email',
       })
     }
 
     // Fallback to file storage (for development/local)
     const fileSaved = saveToFile(formData)
-    
+
     if (fileSaved) {
-      return res.status(200).json({ 
-        success: true, 
+      return res.status(200).json({
+        success: true,
         message: 'Message saved successfully',
         method: 'file',
-        note: 'Email configuration not available. Message saved to local file.'
+        note: 'Email configuration not available. Message saved to local file.',
       })
     }
 
     // Both methods failed
-    return res.status(500).json({ 
-      error: 'Failed to process message. Please try again later.' 
+    return res.status(500).json({
+      error: 'Failed to process message. Please try again later.',
     })
-
   } catch (error) {
     console.error('Contact form error:', error)
-    return res.status(500).json({ 
-      error: 'Internal server error' 
+    return res.status(500).json({
+      error: 'Internal server error',
     })
   }
 }
