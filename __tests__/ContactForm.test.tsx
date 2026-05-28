@@ -25,8 +25,8 @@ describe('ContactForm Component', () => {
     fireEvent.click(submitButton)
 
     await waitFor(() => {
-      expect(screen.getByText(/full name/i).closest('input')).toHaveAttribute('required')
-      expect(screen.getByText(/email address/i).closest('input')).toHaveAttribute('required')
+      expect(screen.getByLabelText(/full name/i)).toBeRequired()
+      expect(screen.getByLabelText(/email address/i)).toBeRequired()
     })
   })
 

@@ -5,8 +5,6 @@ import Head from 'next/head'
 import Container from '../../components/Container'
 import { Calendar, Tag, User, ArrowLeft } from 'lucide-react'
 import { getBlogPosts, getBlogPost, getBlogSlugs } from '../../lib/blog'
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import { serialize } from 'next-mdx-remote/serialize'
 
 interface BlogPostPageProps {
   post: {
