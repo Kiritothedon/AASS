@@ -2,6 +2,7 @@ import { randomUUID } from 'crypto'
 import fs from 'fs'
 import path from 'path'
 import { getSql, hasDatabase } from '../db'
+import { getSupabaseAdmin, hasSupabaseStorage } from '../supabase-admin'
 import type {
   CreateIncidentInput,
   IncidentPublic,
@@ -18,7 +19,13 @@ const INCIDENTS_FILE = path.join(process.cwd(), 'data', 'incidents.json')
 
 function isFileStorageMode(): boolean {
   if (process.env.INCIDENTS_STORAGE === 'file') return true
-  if (process.env.NODE_ENV === 'development' && !hasDatabase()) return true
+  if (
+    process.env.NODE_ENV === 'development' &&
+    !hasDatabase() &&
+    !hasSupabaseStorage()
+  ) {
+    return true
+  }
   return false
 }
 
@@ -39,7 +46,7 @@ function writeFileIncidents(rows: IncidentRecord[]): void {
 
 export function incidentsStorageReady(): boolean {
   if (isFileStorageMode()) return true
-  return hasDatabase()
+  return hasDatabase() || hasSupabaseStorage()
 }
 
 export async function countRecentByFingerprint(
@@ -55,17 +62,29 @@ export async function countRecentByFingerprint(
     ).length
   }
 
-  const sql = getSql()
-  if (!sql) return 0
+  if (hasDatabase()) {
+    const sql = getSql()
+    if (!sql) return 0
+    const rows = await sql`
+      select count(*)::int as count
+      from incidents
+      where fingerprint_hash = ${fingerprintHash}
+        and created_at >= ${since}
+    `
+    return Number(rows[0]?.count ?? 0)
+  }
 
-  const rows = await sql`
-    select count(*)::int as count
-    from incidents
-    where fingerprint_hash = ${fingerprintHash}
-      and created_at >= ${since}
-  `
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return 0
 
-  return Number(rows[0]?.count ?? 0)
+  const { count, error } = await supabase
+    .from('incidents')
+    .select('*', { count: 'exact', head: true })
+    .eq('fingerprint_hash', fingerprintHash)
+    .gte('created_at', since)
+
+  if (error) throw error
+  return count ?? 0
 }
 
 export async function createIncident(input: CreateIncidentInput): Promise<IncidentPublic> {
@@ -91,33 +110,57 @@ export async function createIncident(input: CreateIncidentInput): Promise<Incide
     return toPublicIncident(row)
   }
 
-  const sql = getSql()
-  if (!sql) {
-    throw new Error('Incident storage is not configured')
+  if (hasDatabase()) {
+    const sql = getSql()
+    if (!sql) throw new Error('Incident storage is not configured')
+
+    const inserted = await sql`
+      insert into incidents (
+        reporter_name, city, state, title, description,
+        incident_type, occurred_on, latitude, longitude, fingerprint_hash
+      ) values (
+        ${row.reporter_name},
+        ${row.city},
+        ${row.state},
+        ${row.title},
+        ${row.description},
+        ${row.incident_type},
+        ${row.occurred_on},
+        ${row.latitude},
+        ${row.longitude},
+        ${input.fingerprintHash}
+      )
+      returning
+        id, reporter_name, city, state, title, description,
+        incident_type, occurred_on, latitude, longitude, created_at
+    `
+    return toPublicIncident(inserted[0] as IncidentRecord)
   }
 
-  const inserted = await sql`
-    insert into incidents (
-      reporter_name, city, state, title, description,
-      incident_type, occurred_on, latitude, longitude, fingerprint_hash
-    ) values (
-      ${row.reporter_name},
-      ${row.city},
-      ${row.state},
-      ${row.title},
-      ${row.description},
-      ${row.incident_type},
-      ${row.occurred_on},
-      ${row.latitude},
-      ${row.longitude},
-      ${input.fingerprintHash}
-    )
-    returning
-      id, reporter_name, city, state, title, description,
-      incident_type, occurred_on, latitude, longitude, created_at
-  `
+  const supabase = getSupabaseAdmin()
+  if (!supabase) throw new Error('Incident storage is not configured')
 
-  return toPublicIncident(inserted[0] as IncidentRecord)
+  const { data, error } = await supabase
+    .from('incidents')
+    .insert({
+      reporter_name: row.reporter_name,
+      city: row.city,
+      state: row.state,
+      title: row.title,
+      description: row.description,
+      incident_type: row.incident_type,
+      occurred_on: row.occurred_on,
+      latitude: row.latitude,
+      longitude: row.longitude,
+      fingerprint_hash: input.fingerprintHash,
+    })
+    .select(
+      'id, reporter_name, city, state, title, description, incident_type, occurred_on, latitude, longitude, created_at'
+    )
+    .single()
+
+  if (error) throw error
+  return toPublicIncident(data as IncidentRecord)
 }
 
 export async function listAllIncidents(): Promise<IncidentPublic[]> {
@@ -125,19 +168,33 @@ export async function listAllIncidents(): Promise<IncidentPublic[]> {
     return readFileIncidents().map(toPublicIncident)
   }
 
-  const sql = getSql()
-  if (!sql) return []
+  if (hasDatabase()) {
+    const sql = getSql()
+    if (!sql) return []
+    const rows = await sql`
+      select
+        id, reporter_name, city, state, title, description,
+        incident_type, occurred_on, latitude, longitude, created_at
+      from incidents
+      order by created_at desc
+      limit 500
+    `
+    return (rows as IncidentRecord[]).map(toPublicIncident)
+  }
 
-  const rows = await sql`
-    select
-      id, reporter_name, city, state, title, description,
-      incident_type, occurred_on, latitude, longitude, created_at
-    from incidents
-    order by created_at desc
-    limit 500
-  `
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return []
 
-  return (rows as IncidentRecord[]).map(toPublicIncident)
+  const { data, error } = await supabase
+    .from('incidents')
+    .select(
+      'id, reporter_name, city, state, title, description, incident_type, occurred_on, latitude, longitude, created_at'
+    )
+    .order('created_at', { ascending: false })
+    .limit(500)
+
+  if (error) throw error
+  return (data as IncidentRecord[]).map(toPublicIncident)
 }
 
 export async function getMapPins(): Promise<MapLocationPin[]> {

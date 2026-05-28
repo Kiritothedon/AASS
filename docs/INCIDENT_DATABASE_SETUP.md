@@ -1,30 +1,28 @@
-# AASS incident database setup
+# AASS incident database
 
-Incident reports use a **dedicated Postgres database** that is separate from Global Ticket Pay (GTP).
+Incident reports use the **GTPStream Supabase project** (`zpdfeujmytspdadzgxrg`), repurposed for AASS. This is **not** the Global Ticket Pay database (`iyfnoiqnyvwjyughdfym`).
 
-## Important
+## Already done in repo
 
-- Do **not** use the GTP Supabase project (`iyfnoiqnyvwjyughdfym`) for AASS.
-- No GTP database changes were made for this feature; only application code was added.
-- Your Supabase org free tier allows **2 active projects** (currently GTP + GTPStream). To add a third Supabase project for AASS, pause or delete an unused project, or upgrade.
+- `incidents` table created via `database/incidents.sql`
+- Supabase CLI linked: `supabase link --project-ref zpdfeujmytspdadzgxrg`
 
-## Option A: Neon (recommended, separate from Supabase)
+## Rename project (optional)
 
-1. Create a project at [neon.tech](https://neon.tech) named `aass-incidents`.
-2. Copy the **connection string** (pooled).
-3. In Vercel → AASS project → Settings → Environment Variables, set:
-   - `DATABASE_URL` = your Neon connection string
-   - `INCIDENT_FINGERPRINT_SALT` = long random string
-4. Run `database/incidents.sql` in the Neon SQL editor once.
+In [Supabase Dashboard](https://supabase.com/dashboard/project/zpdfeujmytspdadzgxrg/settings/general), change the project name from **GTPStream** to **AASS**.
 
-## Option B: New Supabase project (AASS only)
+## Vercel environment variables
 
-1. Pause or remove an unused Supabase project if you are at the 2-project limit.
-2. Create a new project named **AASS** (not GTP).
-3. Settings → Database → connection string (URI) → use as `DATABASE_URL`.
-4. SQL Editor → run `database/incidents.sql`.
-5. Add `DATABASE_URL` and `INCIDENT_FINGERPRINT_SALT` to Vercel.
+Set these on the **aass** Vercel project:
 
-## Option C: Local development
+| Variable | Value |
+|----------|--------|
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://zpdfeujmytspdadzgxrg.supabase.co` |
+| `SUPABASE_SERVICE_ROLE_KEY` | Service role key from Supabase → Settings → API |
+| `INCIDENT_FINGERPRINT_SALT` | Long random string (32+ chars) |
 
-Without `DATABASE_URL`, the app stores reports in `data/incidents.json` automatically in development.
+Redeploy after saving.
+
+## Local development
+
+Copy `.env.example` to `.env.local` and add your service role key, or leave unset to use `data/incidents.json`.
