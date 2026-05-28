@@ -46,6 +46,28 @@
   .bg-gtp-glow {
     background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 65%);
   }
+
+  .form-label {
+    @apply block text-sm font-medium text-primary-white mb-1.5;
+  }
+
+  .form-input {
+    @apply w-full rounded-lg border border-gtp-border bg-gtp-bg-1 px-3.5 py-2.5 text-sm text-primary-white placeholder:text-secondary-muted/70 focus:outline-none focus:ring-2 focus:ring-gtp-blue/40 focus:border-gtp-blue/50 transition-colors;
+  }
+
+  .aass-map-pin {
+    background: transparent;
+    border: none;
+  }
+
+  .aass-map-pin-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    background: #c7a740;
+    border: 2px solid #f0f6fc;
+    box-shadow: 0 0 0 4px rgba(199, 167, 64, 0.25);
+  }
 }
 
 @layer utilities {

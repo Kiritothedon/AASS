@@ -1,9 +1,11 @@
 import Link from 'next/link'
 
 const navigation = [
-  { name: 'Headlines', href: '#latest' },
-  { name: 'Coverage', href: '#more-coverage' },
-  { name: 'About', href: '#about' },
+  { name: 'Headlines', href: '/#latest' },
+  { name: 'Coverage', href: '/#more-coverage' },
+  { name: 'Report', href: '/report' },
+  { name: 'Map', href: '/incident-map' },
+  { name: 'About', href: '/#about' },
 ]
 
 export default function Navbar() {
@@ -27,13 +29,13 @@ export default function Navbar() {
 
           <nav className="flex items-center gap-1" aria-label="Primary">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
-                className="rounded-md px-3.5 py-2 text-sm font-medium text-secondary-muted transition-colors hover:bg-gtp-bg-2 hover:text-primary-white"
+                className="rounded-md px-2.5 lg:px-3 py-2 text-xs sm:text-sm font-medium text-secondary-muted transition-colors hover:bg-gtp-bg-2 hover:text-primary-white whitespace-nowrap"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
             <a
               href="https://www.globalticketpay.com"
