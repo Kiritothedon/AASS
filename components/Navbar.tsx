@@ -1,41 +1,51 @@
 import Link from 'next/link'
-import { Newspaper } from 'lucide-react'
 
 const navigation = [
   { name: 'Headlines', href: '#latest' },
+  { name: 'Coverage', href: '#more-coverage' },
   { name: 'About', href: '#about' },
 ]
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 border-b border-gtp-border bg-gtp-bg-0/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-gtp-border/80 bg-gtp-bg-0/95 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
       <div className="container-custom">
-        <div className="flex h-14 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-gold/15 border border-primary-gold/30">
-              <Newspaper className="h-4 w-4 text-primary-gold" />
+        <div className="flex h-16 items-center justify-between gap-6">
+          <Link href="/" className="group flex items-center gap-3 min-w-0">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-gtp-border bg-gradient-to-br from-primary-gold/20 via-gtp-bg-2 to-gtp-blue/10 shadow-inner">
+              <span className="text-sm font-extrabold tracking-tight text-primary-gold">A</span>
             </span>
-            <span className="text-lg font-bold text-primary-white font-serif tracking-wide">
-              AASS
-            </span>
-            <span className="hidden sm:inline text-xs text-secondary-muted font-sans font-normal">
-              News &amp; Affairs
+            <span className="flex flex-col leading-none">
+              <span className="text-[15px] font-bold tracking-tight text-primary-white group-hover:text-gtp-blue-light transition-colors">
+                AASS
+              </span>
+              <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-secondary-muted">
+                News Hub
+              </span>
             </span>
           </Link>
 
-          <div className="flex items-center gap-6">
+          <nav className="flex items-center gap-1" aria-label="Primary">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-secondary-muted hover:text-gtp-blue-light transition-colors"
+                className="rounded-md px-3.5 py-2 text-sm font-medium text-secondary-muted transition-colors hover:bg-gtp-bg-2 hover:text-primary-white"
               >
                 {item.name}
               </a>
             ))}
-          </div>
+            <a
+              href="https://www.globalticketpay.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 hidden sm:inline-flex items-center rounded-md border border-gtp-border bg-gtp-bg-2 px-3.5 py-2 text-sm font-medium text-gtp-blue-light transition-colors hover:border-gtp-blue/40 hover:bg-gtp-bg-3"
+            >
+              GTP
+            </a>
+          </nav>
         </div>
       </div>
-    </nav>
+    </header>
   )
 }
