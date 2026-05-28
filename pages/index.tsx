@@ -48,10 +48,33 @@ function StoryImage({
   )
 }
 
+function SecondaryStoryCard({ article }: { article: NewsArticle }) {
+  return (
+    <a
+      href={article.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex h-full min-h-[148px] overflow-hidden rounded-xl border border-gtp-border bg-gtp-bg-2 hover:border-gtp-blue/50 transition-colors"
+    >
+      <div className="story-image-frame w-[38%] max-w-[200px] shrink-0 self-stretch min-h-[148px]">
+        <StoryImage article={article} iconClass="h-8 w-8" />
+      </div>
+      <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-3.5 sm:px-5">
+        <p className="text-[11px] font-semibold uppercase tracking-wide text-gtp-blue">{article.source}</p>
+        <h3 className="mt-1 text-sm sm:text-[15px] font-bold text-primary-white font-serif leading-snug line-clamp-3 group-hover:text-gtp-blue-light transition-colors">
+          {article.title}
+        </h3>
+        <p className="mt-2 text-[11px] text-secondary-muted">{formatDate(article.publishedAt)}</p>
+      </div>
+    </a>
+  )
+}
+
 export default function HomePage({ articles, fetchedAt }: HomePageProps) {
   const [featured, ...rest] = articles
-  const sidebar = rest.slice(0, 8)
-  const moreCoverage = rest.slice(8)
+  const secondaryRow = rest.slice(0, 2)
+  const sidebar = rest.slice(2, 10)
+  const moreCoverage = rest.slice(10)
   const spotlight = moreCoverage.slice(0, 2)
   const listStories = moreCoverage.slice(2)
 
@@ -100,8 +123,8 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
               Headlines are loading slowly. Please refresh in a moment.
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              <article className="lg:col-span-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-stretch">
+              <article className="lg:col-span-8 flex flex-col gap-5">
                 {featured && (
                   <a
                     href={featured.link}
@@ -109,8 +132,8 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                     rel="noopener noreferrer"
                     className="group block overflow-hidden rounded-2xl border border-gtp-border bg-gtp-bg-2 hover:border-gtp-blue/50 transition-colors"
                   >
-                    <div className="grid md:grid-cols-2 md:min-h-[320px]">
-                      <div className="story-image-frame aspect-[16/10] md:aspect-auto md:h-full md:min-h-[320px]">
+                    <div className="grid md:grid-cols-2 md:min-h-[380px]">
+                      <div className="story-image-frame aspect-[16/10] md:aspect-auto md:h-full md:min-h-[380px]">
                         <StoryImage article={featured} iconClass="h-16 w-16" />
                         <span className="absolute top-4 left-4 rounded-md bg-primary-gold px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-primary-black">
                           Top Story
@@ -123,7 +146,7 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                         <h2 className="text-2xl md:text-[1.65rem] font-bold text-primary-white font-serif leading-snug group-hover:text-gtp-blue-light transition-colors">
                           {featured.title}
                         </h2>
-                        <p className="mt-3 text-sm text-secondary-muted leading-relaxed line-clamp-3">
+                        <p className="mt-3 text-sm text-secondary-muted leading-relaxed line-clamp-4">
                           {featured.excerpt}
                         </p>
                         <p className="mt-4 text-xs text-secondary-muted">{formatDate(featured.publishedAt)}</p>
@@ -135,16 +158,24 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                     </div>
                   </a>
                 )}
+
+                {secondaryRow.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {secondaryRow.map((article) => (
+                      <SecondaryStoryCard key={article.id} article={article} />
+                    ))}
+                  </div>
+                )}
               </article>
 
-              <aside className="lg:col-span-4">
-                <div className="rounded-2xl border border-gtp-border bg-gtp-bg-2 overflow-hidden h-full">
-                  <div className="px-5 py-3.5 border-b border-gtp-border bg-gtp-bg-3">
+              <aside className="lg:col-span-4 flex">
+                <div className="rounded-2xl border border-gtp-border bg-gtp-bg-2 overflow-hidden flex flex-col w-full min-h-0">
+                  <div className="px-5 py-3.5 border-b border-gtp-border bg-gtp-bg-3 shrink-0">
                     <h3 className="text-xs font-bold uppercase tracking-wider text-primary-white">
                       Latest Headlines
                     </h3>
                   </div>
-                  <ul className="divide-y divide-gtp-border max-h-[500px] overflow-y-auto">
+                  <ul className="divide-y divide-gtp-border flex-1 overflow-y-auto min-h-0">
                     {sidebar.map((article) => (
                       <li key={article.id}>
                         <a
