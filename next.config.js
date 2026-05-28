@@ -7,10 +7,21 @@ const nextConfig = {
     mdxRs: false,
   },
   images: {
-    domains: ['images.unsplash.com'],
+    remotePatterns: [
+      { protocol: 'https', hostname: '**' },
+      { protocol: 'http', hostname: '**' },
+    ],
+    unoptimized: true,
   },
-  env: {
-    CUSTOM_KEY: process.env.CUSTOM_KEY,
+  async redirects() {
+    return [
+      { source: '/about', destination: '/#about', permanent: false },
+      { source: '/blog', destination: '/#latest', permanent: false },
+      { source: '/blog/:path*', destination: '/#latest', permanent: false },
+      { source: '/contact', destination: '/#about', permanent: false },
+      { source: '/initiatives', destination: '/', permanent: false },
+      { source: '/software', destination: '/', permanent: false },
+    ]
   },
 }
 
