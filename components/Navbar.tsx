@@ -37,14 +37,6 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <a
-              href="https://www.globalticketpay.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-2 hidden sm:inline-flex items-center rounded-md border border-gtp-border bg-gtp-bg-2 px-3.5 py-2 text-sm font-medium text-gtp-blue-light transition-colors hover:border-gtp-blue/40 hover:bg-gtp-bg-3"
-            >
-              GTP
-            </a>
           </nav>
         </div>
       </div>

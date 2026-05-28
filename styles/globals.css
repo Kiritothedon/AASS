@@ -68,6 +68,15 @@
     border: 2px solid #f0f6fc;
     box-shadow: 0 0 0 4px rgba(199, 167, 64, 0.25);
   }
+
+  /* News card images: fill frame, centered crop */
+  .story-image-frame {
+    @apply relative w-full overflow-hidden bg-gtp-bg-3;
+  }
+
+  .story-image {
+    @apply absolute inset-0 h-full w-full object-cover object-center;
+  }
 }
 
 @layer utilities {

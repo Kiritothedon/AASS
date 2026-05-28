@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Clock, ExternalLink, Newspaper } from 'lucide-react'
 import { fetchNewsArticles, type NewsArticle } from '../lib/news'
@@ -24,28 +23,26 @@ function formatDate(iso: string) {
 
 function StoryImage({
   article,
-  className = '',
   iconClass = 'h-10 w-10',
 }: {
   article: NewsArticle
-  className?: string
   iconClass?: string
 }) {
   if (article.imageUrl) {
     return (
-      <Image
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
         src={article.imageUrl}
         alt=""
-        fill
-        className={`object-cover ${className}`}
-        sizes="(max-width: 768px) 100vw, 50vw"
-        unoptimized
+        className="story-image"
+        loading="lazy"
+        decoding="async"
       />
     )
   }
 
   return (
-    <div className={`absolute inset-0 bg-gradient-to-br from-gtp-bg-3 to-gtp-bg-0 flex items-center justify-center ${className}`}>
+    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gtp-bg-3 to-gtp-bg-0">
       <Newspaper className={`${iconClass} text-gtp-blue/35`} />
     </div>
   )
@@ -112,8 +109,8 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                     rel="noopener noreferrer"
                     className="group block overflow-hidden rounded-2xl border border-gtp-border bg-gtp-bg-2 hover:border-gtp-blue/50 transition-colors"
                   >
-                    <div className="grid md:grid-cols-2">
-                      <div className="relative aspect-[16/10] md:aspect-auto md:min-h-[300px] bg-gtp-bg-3">
+                    <div className="grid md:grid-cols-2 md:min-h-[320px]">
+                      <div className="story-image-frame aspect-[16/10] md:aspect-auto md:h-full md:min-h-[320px]">
                         <StoryImage article={featured} iconClass="h-16 w-16" />
                         <span className="absolute top-4 left-4 rounded-md bg-primary-gold px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-primary-black">
                           Top Story
@@ -191,7 +188,7 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                       rel="noopener noreferrer"
                       className="group block overflow-hidden rounded-xl border border-gtp-border bg-gtp-bg-2 hover:border-gtp-blue/40 transition-colors"
                     >
-                      <div className="relative aspect-[16/9] max-h-[220px] bg-gtp-bg-3">
+                      <div className="story-image-frame aspect-[16/9] w-full">
                         <StoryImage article={article} />
                         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-gtp-bg-0 via-gtp-bg-0/90 to-transparent p-4 pt-12">
                           <p className="text-[11px] font-semibold uppercase tracking-wide text-gtp-blue">
@@ -222,7 +219,7 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                       rel="noopener noreferrer"
                       className="group flex gap-4 overflow-hidden rounded-xl border border-gtp-border bg-gtp-bg-2 p-3 hover:border-gtp-blue/40 hover:bg-gtp-bg-3/50 transition-colors sm:p-4"
                     >
-                      <div className="relative h-[72px] w-[108px] shrink-0 overflow-hidden rounded-lg bg-gtp-bg-3 sm:h-20 sm:w-32">
+                      <div className="story-image-frame h-[72px] w-[108px] shrink-0 rounded-lg sm:h-20 sm:w-36">
                         <StoryImage article={article} iconClass="h-6 w-6" />
                       </div>
                       <div className="min-w-0 flex-1 py-0.5">
@@ -278,6 +275,7 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
       articles,
       fetchedAt: new Date().toISOString(),
     },
-    revalidate: 1800,
+    // Regenerate at most every 10 minutes when visited; Vercel Cron also revalidates every 30 minutes
+    revalidate: 600,
   }
 }
