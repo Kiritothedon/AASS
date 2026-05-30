@@ -9,7 +9,6 @@ const navigation = [
   { name: 'Coverage', href: '/#more-coverage' },
   { name: 'Report', href: '/report' },
   { name: 'Map', href: '/incident-map' },
-  { name: 'Software', href: '/software' },
   { name: 'About', href: '/about' },
 ]
 

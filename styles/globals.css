@@ -11,6 +11,8 @@
 
   body {
     @apply bg-gtp-bg-0 text-primary-white antialiased;
+    background-image: radial-gradient(circle, rgba(59, 130, 246, 0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
 
   h1,

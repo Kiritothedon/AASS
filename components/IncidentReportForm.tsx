@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { AlertCircle, CheckCircle2, MapPin, Send } from 'lucide-react'
+import { AlertCircle, CheckCircle2, Loader2, MapPin, Navigation, Send } from 'lucide-react'
 import { US_STATES } from '../lib/us-states'
 
 const INCIDENT_TYPES = [
@@ -14,9 +14,38 @@ const INCIDENT_TYPES = [
   { value: 'other', label: 'Other' },
 ]
 
+async function reverseGeocode(lat: number, lon: number): Promise<{ city: string; state: string; address: string } | null> {
+  try {
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&addressdetails=1`,
+      {
+        headers: {
+          'User-Agent': 'AASS-IncidentMap/1.0',
+          Accept: 'application/json',
+        },
+        signal: AbortSignal.timeout(8000),
+      }
+    )
+    if (!res.ok) return null
+    const data = await res.json()
+    const a = data.address || {}
+    const city = a.city || a.town || a.village || a.county || ''
+    const stateAbbr = US_STATES.find(
+      (s) => s.name.toLowerCase() === (a.state || '').toLowerCase()
+    )?.code ?? ''
+    const road = a.road || ''
+    const houseNumber = a.house_number || ''
+    const address = [houseNumber, road].filter(Boolean).join(' ')
+    return city && stateAbbr ? { city, state: stateAbbr, address } : null
+  } catch {
+    return null
+  }
+}
+
 export default function IncidentReportForm() {
   const [form, setForm] = useState({
     reporterName: '',
+    address: '',
     city: '',
     state: 'TX',
     title: '',
@@ -26,47 +55,63 @@ export default function IncidentReportForm() {
     company: '',
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [geoStatus, setGeoStatus] = useState<'idle' | 'detecting' | 'done' | 'denied'>('idle')
   const [message, setMessage] = useState('')
 
-  const update = (field: string, value: string) => {
+  const update = (field: string, value: string) =>
     setForm((prev) => ({ ...prev, [field]: value }))
+
+  const handleUseLocation = () => {
+    if (!navigator.geolocation) {
+      setGeoStatus('denied')
+      return
+    }
+    setGeoStatus('detecting')
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const result = await reverseGeocode(pos.coords.latitude, pos.coords.longitude)
+        if (result) {
+          setForm((prev) => ({
+            ...prev,
+            city: result.city || prev.city,
+            state: result.state || prev.state,
+            address: result.address || prev.address,
+          }))
+          setGeoStatus('done')
+        } else {
+          setGeoStatus('idle')
+        }
+      },
+      () => setGeoStatus('denied'),
+      { timeout: 10000, maximumAge: 60000 }
+    )
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
     setMessage('')
-
     try {
       const response = await fetch('/api/incidents', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-
       const data = await response.json()
-
       if (!response.ok) {
         setStatus('error')
         setMessage(data.error || data.details?.join(' ') || 'Unable to submit report')
         return
       }
-
       setStatus('success')
       setMessage(
         data.mapped
-          ? 'Your report was submitted and will appear on the incident map for your city.'
-          : 'Your report was submitted. Map placement may take a moment if geocoding is unavailable.'
+          ? 'Your report was submitted and will appear on the incident map.'
+          : 'Report submitted. Map placement may take a moment.'
       )
       setForm({
-        reporterName: '',
-        city: '',
-        state: form.state,
-        title: '',
-        description: '',
-        incidentType: 'other',
-        occurredOn: '',
-        company: '',
+        reporterName: '', address: '', city: '', state: form.state,
+        title: '', description: '', incidentType: 'other', occurredOn: '', company: '',
       })
     } catch {
       setStatus('error')
@@ -85,11 +130,7 @@ export default function IncidentReportForm() {
             <MapPin className="h-4 w-4" />
             View incident map
           </Link>
-          <button
-            type="button"
-            className="btn-secondary"
-            onClick={() => setStatus('idle')}
-          >
+          <button type="button" className="btn-secondary" onClick={() => setStatus('idle')}>
             Submit another report
           </button>
         </div>
@@ -112,6 +153,7 @@ export default function IncidentReportForm() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Reporter name */}
         <div>
           <label htmlFor="reporterName" className="form-label">
             Your name <span className="text-secondary-muted font-normal">(optional)</span>
@@ -126,9 +168,10 @@ export default function IncidentReportForm() {
           />
         </div>
 
+        {/* Incident type */}
         <div>
           <label htmlFor="incidentType" className="form-label">
-            Incident type <span className="text-secondary-muted font-normal">(optional)</span>
+            Incident type
           </label>
           <select
             id="incidentType"
@@ -136,48 +179,94 @@ export default function IncidentReportForm() {
             value={form.incidentType}
             onChange={(e) => update('incidentType', e.target.value)}
           >
-            {INCIDENT_TYPES.map((type) => (
-              <option key={type.value} value={type.value}>
-                {type.label}
-              </option>
+            {INCIDENT_TYPES.map((t) => (
+              <option key={t.value} value={t.value}>{t.label}</option>
             ))}
           </select>
         </div>
+      </div>
 
+      {/* Location section */}
+      <div className="space-y-4">
+        {/* "Use my location" button */}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={handleUseLocation}
+            disabled={geoStatus === 'detecting'}
+            className="inline-flex items-center gap-2 rounded-lg border border-gtp-blue/40 bg-gtp-blue/8 px-4 py-2 text-xs font-semibold text-gtp-blue-light hover:bg-gtp-blue/15 disabled:opacity-50 transition-all"
+          >
+            {geoStatus === 'detecting' ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <Navigation className="h-3.5 w-3.5" />
+            )}
+            {geoStatus === 'detecting' ? 'Detecting…' : 'Use my location'}
+          </button>
+          {geoStatus === 'done' && (
+            <span className="text-xs text-emerald-400">Location detected</span>
+          )}
+          {geoStatus === 'denied' && (
+            <span className="text-xs text-secondary-muted">Location access denied — enter manually</span>
+          )}
+        </div>
+
+        {/* Address */}
         <div>
-          <label htmlFor="city" className="form-label">
-            City <span className="text-primary-gold">*</span>
+          <label htmlFor="address" className="form-label">
+            Address or street <span className="text-secondary-muted font-normal">(optional)</span>
           </label>
           <input
-            id="city"
-            required
+            id="address"
             className="form-input"
-            value={form.city}
-            onChange={(e) => update('city', e.target.value)}
-            maxLength={100}
-            placeholder="San Antonio"
+            value={form.address}
+            onChange={(e) => update('address', e.target.value)}
+            maxLength={200}
+            placeholder="123 Main St, or an intersection"
+            autoComplete="street-address"
           />
         </div>
 
-        <div>
-          <label htmlFor="state" className="form-label">
-            State <span className="text-primary-gold">*</span>
-          </label>
-          <select
-            id="state"
-            required
-            className="form-input"
-            value={form.state}
-            onChange={(e) => update('state', e.target.value)}
-          >
-            {US_STATES.map((state) => (
-              <option key={state.code} value={state.code}>
-                {state.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {/* City */}
+          <div>
+            <label htmlFor="city" className="form-label">
+              City <span className="text-primary-gold">*</span>
+            </label>
+            <input
+              id="city"
+              required
+              className="form-input"
+              value={form.city}
+              onChange={(e) => update('city', e.target.value)}
+              maxLength={100}
+              placeholder="San Antonio"
+              autoComplete="address-level2"
+            />
+          </div>
 
+          {/* State */}
+          <div>
+            <label htmlFor="state" className="form-label">
+              State <span className="text-primary-gold">*</span>
+            </label>
+            <select
+              id="state"
+              required
+              className="form-input"
+              value={form.state}
+              onChange={(e) => update('state', e.target.value)}
+            >
+              {US_STATES.map((s) => (
+                <option key={s.code} value={s.code}>{s.name}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* Date + headline */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label htmlFor="occurredOn" className="form-label">
             Date of incident <span className="text-secondary-muted font-normal">(optional)</span>
@@ -206,6 +295,7 @@ export default function IncidentReportForm() {
         </div>
       </div>
 
+      {/* Description */}
       <div>
         <label htmlFor="description" className="form-label">
           What happened? <span className="text-primary-gold">*</span>
@@ -220,15 +310,13 @@ export default function IncidentReportForm() {
           placeholder="Share what happened, where, and any context you are comfortable including."
         />
         <p className="mt-2 text-xs text-secondary-muted">
-          Minimum 20 characters. Do not include information you are not comfortable sharing publicly on the map.
+          Minimum 20 characters. Do not include information you are not comfortable sharing publicly.
         </p>
       </div>
 
-      {/* Honeypot for bots */}
+      {/* Honeypot */}
       <div className="hidden" aria-hidden="true">
-        <label htmlFor="company">Company</label>
         <input
-          id="company"
           tabIndex={-1}
           autoComplete="off"
           value={form.company}
@@ -238,7 +326,7 @@ export default function IncidentReportForm() {
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
         <p className="text-xs text-secondary-muted max-w-lg">
-          By submitting, you confirm this report is truthful to the best of your knowledge. AASS may review submissions for abuse.
+          By submitting, you confirm this report is truthful to the best of your knowledge.
         </p>
         <button
           type="submit"
@@ -246,7 +334,7 @@ export default function IncidentReportForm() {
           className="btn-primary inline-flex items-center justify-center gap-2 disabled:opacity-60"
         >
           <Send className="h-4 w-4" />
-          {status === 'loading' ? 'Submitting...' : 'Submit report'}
+          {status === 'loading' ? 'Submitting…' : 'Submit report'}
         </button>
       </div>
     </form>
