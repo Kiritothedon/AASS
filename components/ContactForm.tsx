@@ -59,21 +59,15 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
   if (isSubmitted) {
     return (
       <div className={`${className} text-center`}>
-        <div className="bg-secondary-gray rounded-lg shadow-lg p-8 border border-secondary-dark max-w-md mx-auto">
-          <div className="flex items-center justify-center space-x-2 text-primary-gold mb-4">
-            <Check className="h-8 w-8" />
-            <h3 className="text-xl font-semibold text-primary-white">
-              Message Sent!
-            </h3>
+        <div className="rounded-2xl border border-gtp-border bg-gtp-bg-2 p-8 max-w-md mx-auto">
+          <div className="flex items-center justify-center gap-2 text-primary-gold mb-4">
+            <Check className="h-7 w-7" />
+            <h3 className="text-lg font-bold text-primary-white">Message Sent!</h3>
           </div>
-          <p className="text-secondary-muted mb-6">
-            Thanks — your message was sent. We'll respond within 3–5 business
-            days.
+          <p className="text-sm text-secondary-muted mb-6">
+            Thanks — your message was sent. We&apos;ll respond within 3–5 business days.
           </p>
-          <button
-            onClick={() => setIsSubmitted(false)}
-            className="btn-secondary"
-          >
+          <button onClick={() => setIsSubmitted(false)} className="btn-secondary">
             Send Another Message
           </button>
         </div>
@@ -85,7 +79,7 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
     <div className={className}>
       <form
         onSubmit={handleSubmit}
-        className="bg-secondary-gray rounded-lg shadow-lg p-8 border border-secondary-dark max-w-2xl mx-auto"
+        className="rounded-2xl border border-gtp-border bg-gtp-bg-2 p-6 md:p-8"
       >
         <h3 className="text-2xl font-semibold text-primary-white mb-6 font-serif">
           Send us a message
@@ -113,7 +107,7 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-secondary-dark border border-secondary-muted rounded-lg text-primary-white placeholder-secondary-muted focus:ring-2 focus:ring-primary-gold focus:border-transparent transition-colors"
+              className="form-input"
               placeholder="Your full name"
             />
           </div>
@@ -132,7 +126,7 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-secondary-dark border border-secondary-muted rounded-lg text-primary-white placeholder-secondary-muted focus:ring-2 focus:ring-primary-gold focus:border-transparent transition-colors"
+              className="form-input"
               placeholder="your.email@example.com"
             />
           </div>
@@ -152,7 +146,7 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-secondary-dark border border-secondary-muted rounded-lg text-primary-white placeholder-secondary-muted focus:ring-2 focus:ring-primary-gold focus:border-transparent transition-colors"
+            className="form-input"
             placeholder="What's this about?"
           />
         </div>
@@ -171,7 +165,7 @@ export default function ContactForm({ className = '' }: ContactFormProps) {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-3 bg-secondary-dark border border-secondary-muted rounded-lg text-primary-white placeholder-secondary-muted focus:ring-2 focus:ring-primary-gold focus:border-transparent transition-colors resize-vertical"
+            className="form-input resize-vertical"
             placeholder="Tell us more about your inquiry..."
           />
         </div>

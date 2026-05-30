@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next'
-import Container from '../components/Container'
 import PageHeader from '../components/PageHeader'
 import InitiativeCard from '../components/InitiativeCard'
 
@@ -9,20 +8,11 @@ interface Initiative {
   summary: string
   details: string
   icon: string
-  stats?: {
-    [key: string]: string | number | undefined
-  }
-  cta: {
-    label: string
-    href: string
-  }
+  stats?: { [key: string]: string | number | undefined }
+  cta: { label: string; href: string }
 }
 
-interface InitiativesPageProps {
-  initiatives: Initiative[]
-}
-
-const initiatives = [
+const initiatives: Initiative[] = [
   {
     id: 'business-technology',
     title: 'Business & Technology',
@@ -30,10 +20,7 @@ const initiatives = [
     details:
       'We provide funding, mentorship, and resources to Black entrepreneurs building safety-focused businesses.',
     icon: 'Building2',
-    cta: {
-      label: 'Learn More',
-      href: '#contact',
-    },
+    cta: { label: 'Learn More', href: '#contact' },
   },
   {
     id: 'software-safety',
@@ -42,10 +29,7 @@ const initiatives = [
     details:
       'Our flagship community safety platform and other software solutions designed for neighborhood protection.',
     icon: 'Shield',
-    cta: {
-      label: 'View Software',
-      href: '/software',
-    },
+    cta: { label: 'View Software', href: '/software' },
   },
   {
     id: 'research-policy',
@@ -54,27 +38,29 @@ const initiatives = [
     details:
       'We conduct research and develop policy recommendations to improve community safety outcomes.',
     icon: 'BarChart3',
-    cta: {
-      label: 'Read Research',
-      href: '/blog',
-    },
+    cta: { label: 'Read Research', href: '/blog' },
   },
 ]
 
+interface InitiativesPageProps {
+  initiatives: Initiative[]
+}
+
 export default function InitiativesPage({ initiatives }: InitiativesPageProps) {
   return (
-    <div className="min-h-screen bg-primary-black">
+    <div className="min-h-screen bg-gtp-bg-0">
       <PageHeader
         title="Initiatives"
-        subtitle="Our programs designed to build economic opportunity and community safety."
+        subtitle="Programs designed to build economic opportunity and community safety."
+        badge="Programs"
       />
 
-      <Container>
-        <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="section-padding bg-gtp-bg-1">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {initiatives.map((initiative) => {
-              const lucideReact = require('lucide-react')
-              const IconComponent = lucideReact[initiative.icon] as any
+              const lucideReact = require('lucide-react') // eslint-disable-line
+              const IconComponent = lucideReact[initiative.icon] as any // eslint-disable-line
               return (
                 <InitiativeCard
                   key={initiative.id}
@@ -85,16 +71,11 @@ export default function InitiativesPage({ initiatives }: InitiativesPageProps) {
             })}
           </div>
         </div>
-      </Container>
+      </section>
     </div>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {
-      initiatives,
-    },
-    revalidate: 3600,
-  }
+  return { props: { initiatives }, revalidate: 3600 }
 }

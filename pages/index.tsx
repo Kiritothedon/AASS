@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Clock, ExternalLink, Newspaper } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { fetchNewsArticles, type NewsArticle } from '../lib/news'
 
 interface HomePageProps {
@@ -88,30 +89,40 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
           aria-hidden="true"
         />
 
-        <div className="container-custom relative z-10 py-10 md:py-14">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-[3.25rem] font-bold text-primary-white font-serif leading-[1.1] tracking-tight">
+        <div className="container-custom relative z-10 py-12 md:py-16">
+          <motion.div
+            className="max-w-3xl"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full border border-primary-gold/25 bg-primary-gold/8">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-gold" aria-hidden="true" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary-gold">
+                African American Safety Society
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-[3.25rem] font-bold text-primary-white font-serif leading-[1.08] tracking-tight">
               Stories that shape our communities
             </h1>
             <p className="mt-4 text-base md:text-lg text-secondary-muted max-w-2xl leading-relaxed">
-              A curated one-page news hub for headlines, culture, and public affairs affecting
-              Black America. Updated automatically so you can stay informed without managing feeds
-              yourself.
+              A curated news hub for headlines, culture, and public affairs affecting Black America.
+              Updated automatically so you can stay informed without managing feeds yourself.
             </p>
-            <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-secondary-muted">
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-4 w-4 text-gtp-blue" />
-                Refreshed {formatDate(fetchedAt)}
-              </span>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href="#latest"
-                className="inline-flex items-center gap-1 font-medium text-gtp-blue hover:text-gtp-blue-light"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary-gold px-5 py-2.5 text-sm font-semibold text-primary-black hover:bg-primary-gold/90 active:scale-[0.98] transition-all"
               >
-                Jump to headlines
+                Browse headlines
                 <ArrowRight className="h-4 w-4" />
               </a>
+              <span className="inline-flex items-center gap-1.5 text-sm text-secondary-muted">
+                <Clock className="h-4 w-4 text-gtp-blue/70" />
+                Refreshed {formatDate(fetchedAt)}
+              </span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -123,7 +134,12 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
               Headlines are loading slowly. Please refresh in a moment.
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-stretch">
+            <motion.div
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-stretch"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
+            >
               <article className="lg:col-span-8 flex flex-col gap-5">
                 {featured && (
                   <a
@@ -175,7 +191,7 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                       Latest Headlines
                     </h3>
                   </div>
-                  <ul className="divide-y divide-gtp-border flex-1 overflow-y-auto min-h-0">
+                  <ul className="divide-y divide-gtp-border flex-1 overflow-y-auto min-h-0 scrollbar-thin">
                     {sidebar.map((article) => (
                       <li key={article.id}>
                         <a
@@ -195,7 +211,7 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                   </ul>
                 </div>
               </aside>
-            </div>
+            </motion.div>
           )}
         </div>
       </section>

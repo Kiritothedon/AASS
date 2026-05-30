@@ -77,6 +77,41 @@
   .story-image {
     @apply absolute inset-0 h-full w-full object-cover object-center;
   }
+
+  /* Shared card / button primitives used across pages */
+  .card {
+    @apply rounded-2xl border border-gtp-border bg-gtp-bg-2 p-6 md:p-8;
+  }
+
+  .card-hover {
+    @apply hover:border-gtp-blue/40 hover:shadow-[0_0_0_1px_rgba(59,130,246,0.2)] transition-all;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary-gold px-5 py-2.5 text-sm font-semibold text-primary-black hover:bg-primary-gold/90 active:scale-[0.98] transition-all;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-gtp-border bg-gtp-bg-3 px-5 py-2.5 text-sm font-medium text-primary-white hover:bg-gtp-bg-2 hover:border-gtp-blue/40 active:scale-[0.98] transition-all;
+  }
+}
+
+/* Slim custom scrollbar for sidebar */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #30363d transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #30363d;
+    border-radius: 9999px;
+  }
 }
 
 @layer utilities {

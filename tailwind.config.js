@@ -27,6 +27,9 @@ module.exports = {
           'blue-light': '#60a5fa',
           border: '#30363d',
         },
+        accent: {
+          blue: '#3b82f6',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
