@@ -53,7 +53,7 @@ function Img({ article, className }: { article: NewsArticle; className?: string 
       <img
         src={article.imageUrl}
         alt=""
-        className={`absolute inset-0 w-full h-full object-cover object-center ${className ?? ''}`}
+        className={`story-image ${className ?? ''}`}
         loading="lazy"
         decoding="async"
       />
@@ -74,40 +74,6 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
 
   return (
     <>
-      {/* ── Masthead ─────────────────────────────────────────────────── */}
-      <div className="border-b border-gtp-border bg-gtp-bg-0">
-        <div className="container-custom">
-          <div className="flex items-center justify-between py-3 gap-4">
-            {/* Brand */}
-            <div className="flex items-center gap-3">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded border border-primary-gold/30 bg-primary-gold/8">
-                <span className="text-[11px] font-black text-primary-gold">A</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-sm font-bold tracking-tight text-primary-white">AASS</span>
-                <span className="hidden sm:block text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary-muted">
-                  News Hub
-                </span>
-              </div>
-            </div>
-            {/* Meta */}
-            <div className="flex items-center gap-4 text-[11px] text-secondary-muted">
-              <span className="hidden sm:flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                <span>Black Enterprise</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span>The Grio</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-gtp-blue-light" />
-                <span>Google News</span>
-              </span>
-              <span className="text-secondary-muted/60">
-                {timeAgo(fetchedAt)} ago
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* ── Main editorial grid ───────────────────────────────────────── */}
       <section id="latest" className="bg-gtp-bg-0">
         <div className="container-custom">
@@ -127,7 +93,7 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                   className="group block"
                 >
                   {/* Image */}
-                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-gtp-bg-3">
+                  <div className="story-image-frame aspect-[16/9] w-full">
                     <Img article={featured} />
                     <div className="absolute inset-0 bg-gradient-to-t from-gtp-bg-0/60 via-transparent to-transparent" />
                   </div>
@@ -174,9 +140,12 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
 
             {/* ── Sidebar: 8 headlines (right, 4 cols) ── */}
             <aside className="lg:col-span-4">
-              <div className="px-4 py-2.5 border-b border-gtp-border bg-gtp-bg-1/40">
+              <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-gtp-border bg-gtp-bg-1/40">
                 <span className="text-[9px] font-black uppercase tracking-[0.2em] text-secondary-muted">
                   Latest Headlines
+                </span>
+                <span className="text-[10px] text-secondary-muted/60 shrink-0">
+                  Updated {timeAgo(fetchedAt)} ago
                 </span>
               </div>
               <div className="divide-y divide-gtp-border">
@@ -229,7 +198,7 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                     rel="noopener noreferrer"
                     className="group block p-0"
                   >
-                    <div className="relative aspect-[16/9] overflow-hidden bg-gtp-bg-3">
+                    <div className="story-image-frame aspect-[16/9]">
                       <Img article={a} />
                     </div>
                     <div className="p-4">
@@ -255,7 +224,7 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                       rel="noopener noreferrer"
                       className="group flex gap-3 p-4 hover:bg-gtp-bg-2 transition-colors"
                     >
-                      <div className="relative w-24 h-16 shrink-0 overflow-hidden bg-gtp-bg-3 rounded">
+                      <div className="story-image-frame h-16 w-24 shrink-0 rounded">
                         <Img article={a} />
                       </div>
                       <div className="min-w-0">

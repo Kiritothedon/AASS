@@ -1,53 +1,46 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { ArrowLeft, MapPin } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 
 const IncidentMapView = dynamic(() => import('../components/IncidentMapView'), {
   ssr: false,
   loading: () => (
-    <div className="rounded-2xl border border-gtp-border bg-gtp-bg-2 min-h-[420px] flex items-center justify-center text-secondary-muted text-sm">
-      Loading map...
+    <div className="h-[min(70vh,560px)] rounded-lg border border-gtp-border bg-gtp-bg-2 flex items-center justify-center text-secondary-muted text-sm">
+      Loading map…
     </div>
   ),
 })
 
 export default function IncidentMapPage() {
   return (
-    <div className="bg-gtp-bg-0 min-h-screen">
-      <section className="border-b border-gtp-border bg-gtp-gradient">
-        <div className="container-custom py-10 md:py-12">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-secondary-muted hover:text-gtp-blue-light mb-6"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to news hub
-          </Link>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 text-gtp-blue mb-3">
-                <MapPin className="h-5 w-5" />
-                <span className="text-xs font-bold uppercase tracking-wider">Live community map</span>
-              </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-primary-white font-serif leading-tight">
-                Incident map
-              </h1>
-              <p className="mt-3 text-secondary-muted leading-relaxed">
-                Pins show where reports were submitted. Click a location to read incidents from that city.
-              </p>
-            </div>
-            <Link href="/report" className="btn-primary inline-flex items-center justify-center shrink-0">
-              Report an incident
+    <div className="min-h-screen bg-gtp-bg-0">
+      <div className="container-custom py-6 md:py-8">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+          <div className="max-w-xl">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-xs text-secondary-muted hover:text-gtp-blue-light transition-colors"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              News hub
             </Link>
+            <h1 className="mt-4 text-2xl md:text-[1.75rem] font-bold text-primary-white font-serif leading-tight">
+              Incident map
+            </h1>
+            <p className="mt-2 text-sm text-secondary-muted leading-relaxed">
+              Reports grouped by city. Select a pin to read submissions from that area.
+            </p>
           </div>
+          <Link
+            href="/report"
+            className="btn-primary shrink-0 self-start text-sm px-4 py-2"
+          >
+            Report incident
+          </Link>
         </div>
-      </section>
 
-      <section className="section-padding-compact">
-        <div className="container-custom">
-          <IncidentMapView />
-        </div>
-      </section>
+        <IncidentMapView />
+      </div>
     </div>
   )
 }

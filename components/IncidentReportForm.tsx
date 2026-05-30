@@ -121,17 +121,17 @@ export default function IncidentReportForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-2xl border border-gtp-border bg-gtp-bg-2 p-8 text-center">
-        <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-400" />
-        <h2 className="mt-4 text-xl font-bold text-primary-white font-serif">Report received</h2>
-        <p className="mt-3 text-sm text-secondary-muted leading-relaxed">{message}</p>
-        <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/incident-map" className="btn-primary inline-flex items-center justify-center gap-2">
-            <MapPin className="h-4 w-4" />
-            View incident map
+      <div className="border border-gtp-border bg-gtp-bg-1 rounded-lg p-6 text-center">
+        <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-400" />
+        <h2 className="mt-3 text-lg font-bold text-primary-white font-serif">Report received</h2>
+        <p className="mt-2 text-sm text-secondary-muted leading-relaxed">{message}</p>
+        <div className="mt-5 flex flex-col sm:flex-row gap-2 justify-center">
+          <Link href="/incident-map" className="btn-primary inline-flex items-center justify-center gap-2 text-sm">
+            <MapPin className="h-3.5 w-3.5" />
+            View map
           </Link>
-          <button type="button" className="btn-secondary" onClick={() => setStatus('idle')}>
-            Submit another report
+          <button type="button" className="btn-secondary text-sm" onClick={() => setStatus('idle')}>
+            Submit another
           </button>
         </div>
       </div>
@@ -139,11 +139,10 @@ export default function IncidentReportForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl border border-gtp-border bg-gtp-bg-2 p-6 md:p-8 space-y-6">
-      <div className="rounded-lg border border-gtp-border bg-gtp-bg-3/60 px-4 py-3 text-xs text-secondary-muted leading-relaxed">
-        No account required. Reports are tied to a privacy-safe connection fingerprint (not your name)
-        to reduce spam. Your name is optional. City and state are required.
-      </div>
+    <form onSubmit={handleSubmit} className="space-y-5 border-t border-gtp-border pt-5">
+      <p className="text-xs text-secondary-muted leading-relaxed">
+        No account required. City and state are required. Your name is optional.
+      </p>
 
       {status === 'error' && (
         <div className="flex items-start gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">

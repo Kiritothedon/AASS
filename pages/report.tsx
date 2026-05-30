@@ -1,40 +1,33 @@
 import Link from 'next/link'
-import { ArrowLeft, ShieldAlert } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import IncidentReportForm from '../components/IncidentReportForm'
 
 export default function ReportPage() {
   return (
-    <div className="bg-gtp-bg-0 min-h-screen">
-      <section className="border-b border-gtp-border bg-gtp-gradient">
-        <div className="container-custom py-10 md:py-12">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-secondary-muted hover:text-gtp-blue-light mb-6"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to news hub
-          </Link>
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-gtp-blue mb-3">
-              <ShieldAlert className="h-5 w-5" />
-              <span className="text-xs font-bold uppercase tracking-wider">Community reporting</span>
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-primary-white font-serif leading-tight">
-              Incident reporting
-            </h1>
-            <p className="mt-3 text-secondary-muted leading-relaxed">
-              Document a racial incident you experienced or witnessed. Reports can appear on the public
-              incident map by city and state. No account is needed.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-gtp-bg-0">
+      <div className="container-custom max-w-2xl py-6 md:py-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs text-secondary-muted hover:text-gtp-blue-light transition-colors"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          News hub
+        </Link>
 
-      <section className="section-padding-compact">
-        <div className="container-custom max-w-4xl">
-          <IncidentReportForm />
-        </div>
-      </section>
+        <header className="mt-5 mb-6 border-b border-gtp-border pb-5">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gtp-blue mb-2">
+            Community reporting
+          </p>
+          <h1 className="text-2xl md:text-[1.75rem] font-bold text-primary-white font-serif leading-tight">
+            Report an incident
+          </h1>
+          <p className="mt-2 text-sm text-secondary-muted leading-relaxed">
+            Share what happened by city and state. Reports may appear on the public map. No account required.
+          </p>
+        </header>
+
+        <IncidentReportForm />
+      </div>
     </div>
   )
 }
