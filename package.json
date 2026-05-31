@@ -19,6 +19,8 @@
     "@sendgrid/mail": "^8.1.0",
     "@supabase/supabase-js": "^2.106.2",
     "@types/nodemailer": "^6.4.14",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.0.0",
     "framer-motion": "^12.40.0",
     "gray-matter": "^4.0.3",
