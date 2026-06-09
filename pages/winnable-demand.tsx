@@ -113,7 +113,9 @@ export default function WinnableDemandPage() {
                 For more than a century and a half the descendants of enslaved Americans have been told to wait, to hope,
                 and to trust that the political system would eventually do right by them. It has not. Reparations, as a
                 demand, remains stuck: it is large, it is contested in its definition, and it gives opponents endless room
-                to argue about who, how much, and why. This essay argues for a strategic pivot. Rather than chase an
+                to argue about who, how much, and why. The clearest measure of the stalemate is procedural: H.R. 40, a
+                bill that would not pay a dollar but merely commission a study, has been introduced in every Congress
+                since 1989 and has never received a floor vote. This essay argues for a strategic pivot. Rather than chase an
                 open-ended settlement, the lineage that descends from American chattel slavery should organize around two
                 concrete, time-bound remedies that are far harder to refuse without exposing the refuser.
               </p>
@@ -139,11 +141,20 @@ export default function WinnableDemandPage() {
               culture have lately stopped bothering to disguise the verdict.
             </P>
             <P>
+              Inside the community, this exhaustion has a name, even if it is rarely said aloud: reparations fatigue. It
+              is not a loss of belief in the debt. It is the weariness of watching the same conversation cycle through the
+              same stages, a commission proposed, a panel convened, a report shelved, and of being asked to invest hope in
+              a process that has never once produced a payment. Many of us have quietly concluded that the word itself has
+              become a place where the country parks the issue rather than a road to resolving it. That conclusion
+              deserves respect, not a lecture about persistence.
+            </P>
+            <P>
               This essay does not argue that the moral case for reparations is wrong. It argues that the strategy built
               around the word has reached the end of its usefulness, and that there is a sharper fight available, one whose
               denial would cost the deniers more than the granting ever could. The aim here is not to ask for sympathy.
               Sympathy has a poor record. The aim is to design a demand so reasonable on its face that refusing it becomes
-              the scandal.
+              the scandal, and to do it in a way that respects the time, the dignity, and the patience of the people being
+              asked to fight for it one more time.
             </P>
 
             {/* 1 */}
@@ -204,6 +215,17 @@ export default function WinnableDemandPage() {
               enslavers. The promise was made and then unmade. Everything offered since has been indirect: civil-rights
               statutes that restored what should never have been taken, and broad social programs that were never
               compensation and were never received as such.
+            </P>
+            <P>
+              The recent record sharpens the point rather than softening it. Evanston, Illinois became the first American
+              city to fund a reparations program in 2021, capped housing grants paid for by a cannabis tax, and the entire
+              program was budgeted at ten million dollars. California convened a statewide reparations task force that
+              produced, in 2023, a meticulous thousand-page report; the legislature has since adopted apologies and study
+              measures while declining to fund direct payments. These efforts are honorable, and the people behind them
+              deserve credit. But they also demonstrate the ceiling of the current strategy: even the most willing
+              jurisdictions in the country, when handed the open-ended version of the demand, produce commissions,
+              apologies, and pilot programs scaled to a rounding error. The lesson is not that repair is impossible. It is
+              that the demand, as currently framed, lets even sympathetic governments substitute process for payment.
             </P>
 
             {/* 3 */}
@@ -270,6 +292,16 @@ export default function WinnableDemandPage() {
               all-or-nothing fight that the other side can win simply by running out the clock.
             </P>
             <P>
+              The polling confirms what the legislative record already shows. National surveys have consistently found
+              that fewer than a third of Americans support cash reparations, with one of the widest racial splits of any
+              question pollsters ask: strong majorities of Black respondents in favor, small minorities of white
+              respondents. A strategist looking at those numbers has two options. One is to spend another generation
+              trying to move the national number, against headwinds the courts are actively strengthening. The other is to
+              notice what the same surveys reveal: support rises sharply when the remedy is education rather than cash,
+              when it is bounded rather than open-ended, and when it is tied to a specific, named harm. The public is not
+              refusing repair. It is refusing a particular framing of repair. That is a problem strategy can solve.
+            </P>
+            <P>
               A better demand has the opposite properties. It should be{' '}
               <strong className="text-primary-white font-semibold">concrete</strong>, so there is nothing to haggle over. It
               should be <strong className="text-primary-white font-semibold">bounded in time</strong>, so it cannot be
@@ -283,7 +315,8 @@ export default function WinnableDemandPage() {
               Two demands meet that test. The country that criminalized Black literacy can be asked to pay for Black
               education for a defined term. And the country that extracted unpaid labor for centuries can be asked to forgo a
               few decades of one tax from the descendants of that labor. Neither requires anyone to agree on a dollar figure
-              for slavery. Both convert an unanswerable moral question into a simple administrative one.
+              for slavery. Both convert an unanswerable moral question into a simple administrative one. Take them in
+              turn.
             </P>
 
             {/* 6 */}
@@ -318,6 +351,24 @@ export default function WinnableDemandPage() {
               keep in chains, has no standing to object when the descendants of that system ask, centuries later, for a
               defined season of unobstructed learning. The injury was educational. The repair should be too.
             </P>
+            <P>
+              There is also a present-tense version of the injury, and it matters for credibility. Black students borrow
+              more, default more, and carry student debt longer than any other group; Black bachelor&rsquo;s graduates
+              hold substantially more debt four years after graduation than their white classmates, and the gap widens
+              with time rather than closing. The community is not asking to skip a line. It is asking to stop paying
+              interest, literally, on an education it was once jailed for seeking.
+            </P>
+            <Sub>What &ldquo;tuition-free&rdquo; should cover</Sub>
+            <P>
+              The demand should be drawn wide enough to meet the community where it actually is. Tuition-free should mean
+              public universities, yes, but also community colleges, accredited trade and technical programs, and
+              apprenticeship-linked certificates, and it should flow with equal force to HBCUs, which already graduate an
+              outsized share of Black professionals on a fraction of the endowment wealth of their peers. This breadth
+              matters for a reason the next section makes explicit: the crisis among Black men is not a crisis of people
+              refusing four-year degrees, it is a crisis of ladders. A young man for whom a welding certification or an
+              electrician&rsquo;s apprenticeship is the realistic next rung must find that rung covered, or the program
+              will repair the half of the community that was already climbing and leave the other half where it stands.
+            </P>
             <Sub>The rhetorical trap built into the number</Sub>
             <P>
               The figure of forty-five percent is not arbitrary, and it is not maximal. It is a snare. To deny tuition-free
@@ -338,6 +389,17 @@ export default function WinnableDemandPage() {
               program is both more defensible in court and more honest about what it is, repair owed to a particular people
               for a particular harm.
             </P>
+            <P>
+              The practical objection, that lineage is hard to document, is weaker than it sounds. California&rsquo;s task
+              force already built a working eligibility standard around descent from enslaved or free Black persons
+              present in the United States before 1900. The Freedmen&rsquo;s Bureau records, the 1870 census, and a
+              generation of digitized archives have made this genealogy far more tractable than it was even fifteen years
+              ago. Where records were destroyed, and they often were destroyed by the same governments that did the
+              enslaving, the burden should shift accordingly: a documented family presence in the United States before a
+              threshold date, paired with self-attestation under penalty of perjury, is the standard other federal
+              programs already use when the government&rsquo;s own conduct created the evidentiary gap. The country does
+              not get to burn the records and then demand the receipts.
+            </P>
 
             {/* 7 */}
             <SectionHeading num="7">The second demand: a time-limited tax exemption</SectionHeading>
@@ -346,6 +408,26 @@ export default function WinnableDemandPage() {
               a comparable term. Where free college repairs the mind, the tax holiday repairs the balance sheet, and it
               strikes at the precise mechanism by which the original injury was inflicted: labor extracted without
               compensation.
+            </P>
+            <Sub>Why the tax code is the right instrument</Sub>
+            <P>
+              This is not an arbitrary choice of vehicle. The tax system is one of the quiet places where the racial
+              ledger keeps running. Legal scholarship has documented how facially neutral provisions, the marriage-bonus
+              structure, the preference for investment income over wages, the deductions that reward forms of wealth Black
+              families were historically barred from holding, systematically deliver their benefits elsewhere. Local
+              assessors have for decades over-assessed homes in Black neighborhoods relative to their actual sale prices,
+              taxing Black homeowners more heavily on every dollar of property they own. A community that has been
+              overtaxed in the fine print can fairly be relieved in the headline. The exemption does not bend the tax code
+              toward favoritism. It bends it back.
+            </P>
+            <P>
+              Design matters, so state the design. The exemption should apply to{' '}
+              <strong className="text-primary-white font-semibold">earned income</strong>, wages, salary, and
+              self-employment, up to a generous but defined cap, so the benefit concentrates on working families rather
+              than windfalls. Payroll contributions should continue, so that Social Security and Medicare credits keep
+              accruing and no one can claim the program severs recipients from the systems everyone else relies on.
+              Structured this way, the proposal is not an exit from civic obligation. It is a bounded refund, paid through
+              the same machinery that collects, on the centuries when the obligation ran entirely one way.
             </P>
             <Sub>The mechanism of mobility</Sub>
             <P>
@@ -410,9 +492,47 @@ export default function WinnableDemandPage() {
             </P>
 
             {/* 9 */}
-            <SectionHeading num="9">Anticipating the objections</SectionHeading>
+            <SectionHeading num="9">The path: start where it can pass</SectionHeading>
             <P>
-              A serious proposal must answer its critics in advance. The strongest objections are four, and none is fatal.
+              A demand without a route is a slogan. So name the route. Nothing about this program requires beginning in
+              Washington, and the movements that actually changed this country rarely began there. The Voting Rights Act
+              was won in Selma before it was won in the Senate. Japanese American redress began as a community-led
+              commission strategy, a decade of organized testimony that built a public record Congress eventually found
+              impossible to ignore. The pattern is consistent: the federal government does not lead on repair, it ratifies
+              what organized people have already made undeniable.
+            </P>
+            <P>
+              The first moves are state and municipal. A state with a large descendant population and a public university
+              system can enact the tuition guarantee tomorrow; tuition waivers keyed to specific histories already exist
+              in American law, states waive tuition for Native students, for veterans&rsquo; children, for foster youth,
+              and no constitutional crisis has followed. A city can pilot lineage-verified programs the way Evanston
+              piloted housing grants, but scoped to education, where the per-person cost is modest and the result is
+              visible in four years: a graduating class. Each local win does three things at once. It builds the
+              administrative machinery of lineage verification so that the federal fight is not fought on hypotheticals.
+              It produces alumni, living proof of what the program does. And it forces every neighboring jurisdiction to
+              answer why its descendants deserve less.
+            </P>
+            <P>
+              Then there is the question of allies, and it should be answered without romance. This proposal does not
+              require the country to love us. It requires a working majority, and the design choices are the coalition
+              strategy. Educators and the higher-education sector gain enrolled students at a moment of collapsing
+              enrollment. Employers gain credentialed workers. Fiscal conservatives are handed a program that is bounded,
+              auditable, and self-terminating, the opposite of the permanent bureaucracy they reflexively oppose. Veterans
+              understand the template instinctively, because the structure is the GI Bill: a defined benefit, for a
+              defined group, in recognition of a defined service or, in this case, a defined theft. The pitch to the rest
+              of the country is not guilt. It is the proposition that a nation is better off when ten million more of its
+              people are educated, propertied, and invested, and that this particular route to that outcome also happens
+              to retire its oldest debt.
+            </P>
+            <Pull>
+              The federal government does not lead on repair. It ratifies what organized people have already made
+              undeniable.
+            </Pull>
+
+            {/* 10 */}
+            <SectionHeading num="10">Anticipating the objections</SectionHeading>
+            <P>
+              A serious proposal must answer its critics in advance. The strongest objections are six, and none is fatal.
             </P>
             <Sub>&ldquo;It is unconstitutional.&rdquo;</Sub>
             <P>
@@ -442,9 +562,30 @@ export default function WinnableDemandPage() {
               original creditor has died, particularly when the proceeds of the original theft are still drawing interest in
               the present.
             </P>
+            <Sub>&ldquo;This settles for less and trades away the bigger claim.&rdquo;</Sub>
+            <P>
+              This objection comes from inside the community, and it deserves the most careful answer. Accepting tuition
+              and tax relief does not extinguish the larger moral claim, and the legislation should say so explicitly:
+              this is partial satisfaction, not a release. No one argues that the GI Bill settled the country&rsquo;s full
+              account with its veterans. But there is a harder truth underneath. A claim that is never collected protects
+              nothing. Holding out for the whole debt while generations pass uncompensated is not fidelity to the
+              ancestors; it is a strategy whose principal beneficiary is the debtor. Collect what can be collected now, in
+              a form that compounds, and let a stronger, wealthier, better-educated community decide what to demand next.
+              Movements negotiate from strength, and strength is built, not declared.
+            </P>
+            <Sub>&ldquo;Many of our people will never sit in a classroom. Where is their repair?&rdquo;</Sub>
+            <P>
+              Three answers. First, the education benefit is drawn deliberately wide, trades, apprenticeships,
+              certificates, community colleges, precisely so it reaches the brother who will never want a lecture hall.
+              Second, the tax exemption requires no enrollment at all; it reaches every working descendant from the day it
+              takes effect, the nurse&rsquo;s aide and the truck driver no less than the graduate student. Third, the
+              benefits are household benefits in practice: a daughter&rsquo;s debt-free degree and a father&rsquo;s
+              untaxed wages land on the same kitchen table. The package was designed as a pair for exactly this reason.
+              One demand repairs the future. The other pays the present.
+            </P>
 
-            {/* 10 */}
-            <SectionHeading num="10">Conclusion: pick a fight you can win</SectionHeading>
+            {/* 11 */}
+            <SectionHeading num="11">Conclusion: pick a fight you can win</SectionHeading>
             <P>
               The case for reparations was never wrong. But a moral case that cannot be cashed is, in the end, just a
               grievance with good footnotes. The descendants of American slavery have spent generations making the
@@ -454,8 +595,9 @@ export default function WinnableDemandPage() {
             <P>
               Ask for free college for a span shorter than half the time the country kept your ancestors in chains and
               forbade them to read. Ask for a bounded holiday from the tax on the very kind of labor that was once extracted
-              from them for free. State the demand in a single clean sentence, attach it to documented lineage, and put it
-              in front of the public. Then watch what happens when officials are made to say, on the record, that the heirs
+              from them for free. State the demand in a single clean sentence, attach it to documented lineage, and start
+              where it can pass: a state, a city, a university system, one jurisdiction at a time, until the federal
+              question answers itself. Then watch what happens when officials are made to say, on the record, that the heirs
               of the enslaved deserve not even that much. Some will say it. Let them. Their refusal will do more to unify and
               clarify than any march, because it will show, in their own words, what a century of polite waiting was always
               meant to obscure.
@@ -496,7 +638,26 @@ export default function WinnableDemandPage() {
                   Press.
                 </li>
                 <li>
+                  Avenancio-Le&oacute;n, C., &amp; Howard, T. (2022). The assessment gap: Racial inequalities in property
+                  taxation. <em>The Quarterly Journal of Economics, 137</em>(3).
+                </li>
+                <li>
+                  Brookings Institution (Scott-Clayton, J., &amp; Li, J.). (2016). <em>Black-white disparity in student
+                  loan debt more than triples after graduation.</em>
+                </li>
+                <li>
+                  Brown, D. A. (2021). <em>The Whiteness of Wealth: How the Tax System Impoverishes Black Americans, and
+                  How We Can Fix It.</em> Crown.
+                </li>
+                <li>
+                  California Task Force to Study and Develop Reparation Proposals for African Americans. (2023).{' '}
+                  <em>Final Report.</em> California Department of Justice.
+                </li>
+                <li>
                   Center on Budget and Policy Priorities. (2017). <em>Policy Basics and safety-net participation analyses.</em>
+                </li>
+                <li>
+                  City of Evanston, Illinois. (2021). <em>Evanston Local Reparations: Restorative Housing Program.</em>
                 </li>
                 <li>
                   Claims Conference (Conference on Jewish Material Claims Against Germany). <em>History of German reparations.</em>
@@ -510,11 +671,21 @@ export default function WinnableDemandPage() {
                 </li>
                 <li>PBS. <em>Slavery and the anti-literacy laws of the antebellum South.</em></li>
                 <li>
+                  Pew Research Center. (2022). <em>Black Americans&rsquo; views on reparations for slavery.</em>
+                </li>
+                <li>
                   Supreme Court of the United States. <em>Brown v. Board of Education</em> (1954); <em>Shelby County v.
                   Holder</em> (2013); <em>Rucho v. Common Cause</em> (2019); <em>Brnovich v. DNC</em> (2021); <em>Allen v.
                   Milligan</em> (2023); <em>Students for Fair Admissions v. Harvard</em> (2023).
                 </li>
+                <li>
+                  UNCF (United Negro College Fund). <em>HBCUs punch above their weight: outcomes and endowment data.</em>
+                </li>
                 <li>United States Congress. (1988). <em>Civil Liberties Act of 1988,</em> Pub. L. No. 100-383.</li>
+                <li>
+                  United States Congress. (1989&ndash;present). <em>H.R. 40, Commission to Study and Develop Reparation
+                  Proposals for African Americans Act.</em>
+                </li>
               </ol>
               <p className="mt-7 border-t border-gtp-border pt-5 text-xs font-mono text-secondary-muted leading-relaxed">
                 An opinion essay and policy proposal. Where claims are statistical or contested, the demographics of
