@@ -115,15 +115,14 @@ export default function WinnableDemandPage() {
             {/* Intro */}
             <P>
               There is a particular exhaustion that comes from looking for the good in a system that keeps showing you who
-              it is. Black Americans whose families were forged in slavery have spent generations doing exactly that —
-              believing that if the case were made clearly enough, if the patience were deep enough, if the conduct were
+              it is. Black Americans whose families were forged in slavery have spent generations doing exactly that, believing that if the case were made clearly enough, if the patience were deep enough, if the conduct were
               respectable enough, the country would eventually settle its oldest debt. That faith has thinned. Not because
               the claim grew weaker, but because the answers kept coming back the same, and because the courts and the
               culture have lately stopped bothering to disguise the verdict.
             </P>
             <P>
               This essay does not argue that the moral case for reparations is wrong. It argues that the strategy built
-              around the word has reached the end of its usefulness, and that there is a sharper fight available — one whose
+              around the word has reached the end of its usefulness, and that there is a sharper fight available, one whose
               denial would cost the deniers more than the granting ever could. The aim here is not to ask for sympathy.
               Sympathy has a poor record. The aim is to design a demand so reasonable on its face that refusing it becomes
               the scandal.
@@ -140,7 +139,7 @@ export default function WinnableDemandPage() {
               never let most Black families accumulate the wealth that ordinarily cushions a generation against shocks.
             </P>
             <P>
-              These facts are real, and they are used. They are used, quietly, as a justification — a way of saying that the
+              These facts are real, and they are used. They are used, quietly, as a justification, a way of saying that the
               problem is now internal, cultural, self-inflicted, and therefore no longer the country&rsquo;s
               responsibility. That move should be named for what it is. It takes the predictable downstream effects of
               deliberate policy and rebrands them as a defect of character, so that the conversation can shift from what was
@@ -151,8 +150,8 @@ export default function WinnableDemandPage() {
               are freed without land, capital, or protection, then subjected to a hundred years of terror and legal
               apartheid. When that apartheid is formally ended, they enter the broader society stripped of the
               institutional wealth others had been quietly building the entire time. Then a war on drugs and a welfare
-              architecture arrive in the very decades the doors were supposed to open, and the household — especially the
-              two-parent household — comes apart under incentives that punished its formation. To look at the wreckage at
+              architecture arrive in the very decades the doors were supposed to open, and the household, especially the
+              two-parent household, comes apart under incentives that punished its formation. To look at the wreckage at
               the end of that chain and conclude that the people are simply broken is not analysis. It is an alibi.
             </P>
             <Pull>
@@ -174,7 +173,7 @@ export default function WinnableDemandPage() {
             </P>
             <P>
               In 1988, President Reagan signed the Civil Liberties Act, which issued a formal apology and twenty thousand
-              dollars to each surviving Japanese American who had been interned during the Second World War — a program that
+              dollars to each surviving Japanese American who had been interned during the Second World War, a program that
               ultimately paid more than eighty thousand people. After the Holocaust, West Germany entered into the 1952
               Luxembourg Agreement and, through the Claims Conference, has paid out tens of billions of dollars over the
               following decades to Jewish survivors and their heirs. These were not symbolic gestures alone. They were
@@ -182,7 +181,7 @@ export default function WinnableDemandPage() {
             </P>
             <P>
               The descendants of American slavery received no such thing. The closest the nation ever came was Special
-              Field Orders No. 15 in January 1865 — the famous &ldquo;forty acres&rdquo; — which set aside coastal land for
+              Field Orders No. 15 in January 1865, the famous &ldquo;forty acres,&rdquo; which set aside coastal land for
               freedpeople and was rescinded within the year by President Andrew Johnson, who returned the land to its former
               enslavers. The promise was made and then unmade. Everything offered since has been indirect: civil-rights
               statutes that restored what should never have been taken, and broad social programs that were never
@@ -202,12 +201,12 @@ export default function WinnableDemandPage() {
               Ceiling Commission&rsquo;s 1995 report documented that white women advanced furthest under these policies,
               capturing a disproportionate share of the managerial and professional gains. This is not a fringe talking
               point; it is the mainstream economic reading of the period. A policy framed in the public mind as a handout to
-              Black people functioned, in practice, as an escalator for a different group entirely — and Black Americans
+              Black people functioned, in practice, as an escalator for a different group entirely, and Black Americans
               absorbed the resentment for benefits that largely flowed elsewhere.
             </P>
             <Sub>Who actually relies on welfare</Sub>
             <P>
-              The companion stereotype — that public assistance is a Black program — is equally inverted. Across the major
+              The companion stereotype, that public assistance is a Black program, is equally inverted. Across the major
               means-tested programs, white Americans have consistently made up the single largest bloc of recipients by raw
               numbers, a fact that holds for food assistance and Medicaid in most years. Welfare was never reparations, it
               was never large enough to build wealth, and it was structured in ways that often penalized the very thing a
@@ -226,14 +225,14 @@ export default function WinnableDemandPage() {
               In 2013, the Supreme Court in <em>Shelby County v. Holder</em> struck down the coverage formula at the heart
               of the Voting Rights Act, freeing jurisdictions with long histories of discrimination from the requirement
               that they clear changes to their election laws in advance. Within hours, states moved to enact measures that
-              had previously been blocked. In 2019, <em>Rucho v. Common Cause</em> held that partisan gerrymandering — the
-              surgical drawing of districts to dilute a community&rsquo;s political power — is beyond the reach of the
+              had previously been blocked. In 2019, <em>Rucho v. Common Cause</em> held that partisan gerrymandering, the
+              surgical drawing of districts to dilute a community&rsquo;s political power, is beyond the reach of the
               federal courts entirely. In 2021, <em>Brnovich v. Democratic National Committee</em> narrowed what remained of
               the Act&rsquo;s protection against laws with discriminatory effects.
             </P>
             <P>
-              There have been counter-currents — <em>Allen v. Milligan</em> in 2023 surprised many by enforcing the Voting
-              Rights Act against an Alabama map that diluted Black votes — but the trend line is unmistakable, and the
+              There have been counter-currents, <em>Allen v. Milligan</em> in 2023 surprised many by enforcing the Voting
+              Rights Act against an Alabama map that diluted Black votes, but the trend line is unmistakable, and the
               redistricting fights that have followed continue to test how far maps can be drawn to the disadvantage of
               Black voters. The cumulative message is that the political power of Black communities can be diluted with
               increasing impunity, and that the institution once relied upon to prevent it has chosen to step aside.
@@ -244,7 +243,7 @@ export default function WinnableDemandPage() {
             </Pull>
 
             {/* 5 */}
-            <SectionHeading num="5">Why &ldquo;reparations&rdquo; keeps losing — and the reframe</SectionHeading>
+            <SectionHeading num="5">Why &ldquo;reparations&rdquo; keeps losing, and the reframe</SectionHeading>
             <P>
               The word <em>reparations</em> carries a weight that, paradoxically, makes it easy to defeat. It is
               open-ended, which invites endless argument over the figure. It is framed as compensation for the dead, which
@@ -259,7 +258,7 @@ export default function WinnableDemandPage() {
               caricatured as a permanent entitlement. It should rest on a{' '}
               <strong className="text-primary-white font-semibold">lineage</strong> rather than a mood, so it survives legal
               scrutiny. And above all, it should be{' '}
-              <strong className="text-primary-white font-semibold">morally legible in a single sentence</strong> — so plainly
+              <strong className="text-primary-white font-semibold">morally legible in a single sentence</strong>, so plainly
               fair that the act of refusing it does the persuading for you.
             </P>
             <P>
@@ -287,7 +286,7 @@ export default function WinnableDemandPage() {
               <p className="text-sm text-secondary-muted leading-relaxed">
                 Measured from the arrival of the first enslaved Africans in the Virginia colony in 1619 to the ratification
                 of the Thirteenth Amendment in 1865, chattel slavery was legal on this soil for roughly 246 years. The
-                demand seeks redress for a window equal to fewer than half of those years — a fraction deliberately chosen
+                demand seeks redress for a window equal to fewer than half of those years, a fraction deliberately chosen
                 so that any refusal must be a refusal of less than half.
               </p>
             </div>
@@ -306,20 +305,19 @@ export default function WinnableDemandPage() {
               The figure of forty-five percent is not arbitrary, and it is not maximal. It is a snare. To deny tuition-free
               education for a span shorter than half the duration of slavery, a public official must stand up and argue that
               the descendants of the enslaved do not deserve even that fraction. There is no dignified way to make that
-              argument. Those who oppose it will be forced either to deny it openly — which clarifies the country&rsquo;s
-              posture for everyone watching and galvanizes the very people they are dismissing — or to grant something real.
+              argument. Those who oppose it will be forced either to deny it openly, which clarifies the country&rsquo;s
+              posture for everyone watching and galvanizes the very people they are dismissing, or to grant something real.
               Both outcomes advance the cause. A demand that wins whether it is granted or refused is a demand worth making.
             </P>
             <Sub>Defining the eligible</Sub>
             <P>
-              Eligibility should rest on <strong className="text-primary-white font-semibold">documented lineage</strong> —
-              descent from persons who were enslaved in the United States — rather than on race as such. This is not a
+              Eligibility should rest on <strong className="text-primary-white font-semibold">documented lineage</strong>, descent from persons who were enslaved in the United States, rather than on race as such. This is not a
               cosmetic distinction. The Supreme Court&rsquo;s 2023 decision in{' '}
               <em>Students for Fair Admissions v. Harvard</em> sharply restricted the use of race in admissions and signaled
               deep hostility to race-conscious programs generally. A lineage-based claim sidesteps that wall: it is not a
               benefit for a race, but a remedy for the identifiable descendants of a specific, government-sanctioned crime,
               in the same way that the heirs of other injuries have been compensated by descent. Designed this way, the
-              program is both more defensible in court and more honest about what it is — repair owed to a particular people
+              program is both more defensible in court and more honest about what it is, repair owed to a particular people
               for a particular harm.
             </P>
 
@@ -327,7 +325,7 @@ export default function WinnableDemandPage() {
             <SectionHeading num="7">The second demand: a time-limited tax exemption</SectionHeading>
             <P>
               The companion proposal is a federal income-tax exemption for the descendants of American slavery, granted for
-              a comparable term. Where free college repairs the mind, the tax holiday repairs the balance sheet — and it
+              a comparable term. Where free college repairs the mind, the tax holiday repairs the balance sheet, and it
               strikes at the precise mechanism by which the original injury was inflicted: labor extracted without
               compensation.
             </P>
@@ -352,7 +350,7 @@ export default function WinnableDemandPage() {
               Pair tuition-free education with a tax exemption and the arithmetic of family changes. Men who would otherwise
               be confined to menial work gain a credentialed path; households that would otherwise be too poor to form gain
               the margin to do so. The predictable consequence is a rise in stable two-parent families and, with them, in
-              birth rates — not because anyone is exhorted to marry, but because the material conditions that make marriage
+              birth rates, not because anyone is exhorted to marry, but because the material conditions that make marriage
               and children sane decisions have finally been restored. You do not lecture a community into rebuilding itself.
               You change the incentives, and it rebuilds.
             </P>
@@ -368,8 +366,8 @@ export default function WinnableDemandPage() {
             <P>
               Before integration, segregation&rsquo;s cruelty coexisted with a paradox: it forced Black dollars, Black
               talent, and Black institutions to circulate within Black communities. There were Black-owned banks, insurers,
-              newspapers, hospitals, hotels, and a dense web of schools and businesses — Tulsa&rsquo;s Greenwood district,
-              the &ldquo;Black Wall Street,&rdquo; being only the most famous — precisely because there was nowhere else for
+              newspapers, hospitals, hotels, and a dense web of schools and businesses, Tulsa&rsquo;s Greenwood district,
+              the &ldquo;Black Wall Street,&rdquo; being only the most famous, precisely because there was nowhere else for
               that capital to go. When the doors of the wider economy opened, that internal circulation drained outward. The
               most credentialed left first; Black businesses that had survived on a captive market could not compete with
               newly accessible white ones; and the loss of Black schools after <em>Brown v. Board of Education</em> pushed
@@ -377,8 +375,7 @@ export default function WinnableDemandPage() {
               has never been rebuilt. Integration delivered access and dismantled infrastructure in the same motion.
             </P>
             <P>
-              There is, too, a more uncomfortable dynamic worth naming. Forced social proximity introduced competition —
-              economic and romantic — that a portion of white society resented, and that resentment has a way of translating
+              There is, too, a more uncomfortable dynamic worth naming. Forced social proximity introduced competition, economic and romantic, that a portion of white society resented, and that resentment has a way of translating
               into policy. It is not paranoid to read the war on drugs, the punitive turn in welfare, and the machinery of
               mass incarceration as, among other things, a set of mechanisms that rendered the average Black man less
               viable: as a worker, as a citizen, and as a partner. The scholarship on this is now mainstream; the system of
@@ -387,7 +384,7 @@ export default function WinnableDemandPage() {
             </P>
             <P>
               The conclusion to draw is not a nostalgia for segregation, which was a regime of terror and must never return.
-              It is that the goal should be <em>power and autonomy</em> rather than mere admission — Black-owned
+              It is that the goal should be <em>power and autonomy</em> rather than mere admission, Black-owned
               institutions, Black-controlled capital, Black communities strong enough that their flourishing does not depend
               on the goodwill of people who have repeatedly shown they do not share it. Free college and a tax holiday serve
               exactly this end. They do not beg for a seat at someone else&rsquo;s table. They fund the building of
@@ -448,7 +445,7 @@ export default function WinnableDemandPage() {
             <P>
               This is a fight that wins when it is granted and wins when it is denied. That is the rarest and most valuable
               kind of demand there is. It is time to stop hoping for the good in the system and start making the system
-              choose — in public, in plain language, on a question it cannot answer honestly and still say no.
+              choose, in public, in plain language, on a question it cannot answer honestly and still say no.
             </P>
 
             {/* Author note */}
@@ -463,7 +460,7 @@ export default function WinnableDemandPage() {
                 have served. I entered the Air Force on the path to becoming an airborne linguist; my own time in uniform
                 was cut short in basic training. I mention this only to place myself honestly within the argument. My
                 family&rsquo;s self-reliance is exactly why the stereotypes leveled at us ring so false, and exactly why I
-                believe the remedy owed is not a handout but the return of what was taken — the chance to learn, to build,
+                believe the remedy owed is not a handout but the return of what was taken, the chance to learn, to build,
                 and to keep what we earn.
               </p>
               <p className="text-secondary-muted leading-relaxed">
@@ -502,8 +499,8 @@ export default function WinnableDemandPage() {
                 <li>United States Congress. (1988). <em>Civil Liberties Act of 1988,</em> Pub. L. No. 100-383.</li>
               </ol>
               <p className="mt-7 border-t border-gtp-border pt-5 text-xs font-mono text-secondary-muted leading-relaxed">
-                An opinion essay and policy proposal. Where claims are statistical or contested — the demographics of
-                affirmative action and welfare, the causal reading of the war on drugs — the text flags them as arguments
+                An opinion essay and policy proposal. Where claims are statistical or contested, the demographics of
+                affirmative action and welfare, the causal reading of the war on drugs, the text flags them as arguments
                 and points to the relevant literature rather than asserting precision it cannot prove. Figures for the
                 duration of slavery use the conventional 1619–1865 span; the proposal&rsquo;s percentages would shift
                 modestly under other start dates. The views are the author&rsquo;s own.
