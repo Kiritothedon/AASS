@@ -1,10 +1,10 @@
 export const SITE_URL = 'https://www.aassociety.org'
 export const SITE_NAME = 'AASS'
 export const SITE_FULL_NAME = 'African American Safety Society'
-export const SITE_TAGLINE = 'African American News, Culture & Community Affairs'
+export const SITE_TAGLINE = 'Document Incidents. Prove Patterns. Win Demands.'
 export const DEFAULT_TITLE = `${SITE_NAME} | ${SITE_TAGLINE}`
 export const DEFAULT_DESCRIPTION =
-  'Curated African American news on politics, business, culture, and community safety. Report incidents, explore the public map, and read original analysis from AASSociety.'
+  'Report racial incidents in your community, view submissions on a public map, and read policy analysis on what Black America should demand next. AASSociety is a civic safety and advocacy platform.'
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.svg`
 export const TWITTER_HANDLE = '@aassociety'
 export const FOUNDER_NAME = "De'Mondre Zimmerman"

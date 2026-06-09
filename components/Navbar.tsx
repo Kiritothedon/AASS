@@ -5,10 +5,10 @@ import { Menu, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const navigation = [
-  { name: 'Headlines', href: '/#latest' },
-  { name: 'Coverage', href: '/#more-coverage' },
   { name: 'Report', href: '/report' },
   { name: 'Map', href: '/incident-map' },
+  { name: 'Essay', href: '/winnable-demand' },
+  { name: 'News', href: '/#context' },
   { name: 'About', href: '/about' },
 ]
 
@@ -45,7 +45,7 @@ export default function Navbar() {
                 AASS
               </span>
               <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-secondary-muted">
-                News Hub
+                Safety &amp; Advocacy
               </span>
             </span>
           </Link>

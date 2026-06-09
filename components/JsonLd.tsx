@@ -55,7 +55,7 @@ export function websiteSchema() {
     },
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${SITE_URL}/#latest`,
+      target: `${SITE_URL}/#context`,
       'query-input': 'required name=search_term_string',
     },
   }
