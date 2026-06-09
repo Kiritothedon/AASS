@@ -64,8 +64,8 @@ export default function SEO({
       {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
       {author && <meta property="article:author" content={author} />}
 
-      <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-      <link rel="apple-touch-icon" href="/logo.svg" />
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      <link rel="apple-touch-icon" href="/favicon.svg" />
       <meta name="theme-color" content="#060910" />
     </Head>
   )
