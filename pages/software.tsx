@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next'
 import PageHeader from '../components/PageHeader'
 import ContactForm from '../components/ContactForm'
+import SEO from '../components/SEO'
+import JsonLd, { breadcrumbSchema, webPageSchema } from '../components/JsonLd'
 import {
   Shield,
   BarChart3,
@@ -62,8 +64,22 @@ const inDevelopment = [
 ]
 
 export default function SoftwarePage() {
+  const title = 'Community Safety Software'
+  const description =
+    'Explore AASS safety software including incident reporting, community mapping, and tools built to protect and empower Black communities.'
+
   return (
     <div className="min-h-screen bg-gtp-bg-0">
+      <SEO title={title} description={description} path="/software" />
+      <JsonLd
+        data={[
+          webPageSchema({ title, description, path: '/software' }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Software', path: '/software' },
+          ]),
+        ]}
+      />
       <PageHeader
         title="Software"
         subtitle="Safety technology designed for community protection and resilience."

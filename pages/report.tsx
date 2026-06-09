@@ -1,10 +1,26 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import IncidentReportForm from '../components/IncidentReportForm'
+import SEO from '../components/SEO'
+import JsonLd, { breadcrumbSchema, webPageSchema } from '../components/JsonLd'
 
 export default function ReportPage() {
+  const title = 'Report a Racial Incident'
+  const description =
+    'Report a racial incident by city and state. Community submissions may appear on the public AASS incident map. No account required.'
+
   return (
     <div className="min-h-screen bg-gtp-bg-0">
+      <SEO title={title} description={description} path="/report" />
+      <JsonLd
+        data={[
+          webPageSchema({ title, description, path: '/report' }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Report Incident', path: '/report' },
+          ]),
+        ]}
+      />
       <div className="container-custom max-w-2xl py-6 md:py-8">
         <Link
           href="/"

@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next'
 import PageHeader from '../components/PageHeader'
 import InitiativeCard from '../components/InitiativeCard'
+import SEO from '../components/SEO'
+import JsonLd, { breadcrumbSchema, webPageSchema } from '../components/JsonLd'
 
 interface Initiative {
   id: string
@@ -47,8 +49,22 @@ interface InitiativesPageProps {
 }
 
 export default function InitiativesPage({ initiatives }: InitiativesPageProps) {
+  const title = 'Community Initiatives'
+  const description =
+    'AASS initiatives supporting Black business, technology, safety programs, and community-led progress across the United States.'
+
   return (
     <div className="min-h-screen bg-gtp-bg-0">
+      <SEO title={title} description={description} path="/initiatives" />
+      <JsonLd
+        data={[
+          webPageSchema({ title, description, path: '/initiatives' }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Initiatives', path: '/initiatives' },
+          ]),
+        ]}
+      />
       <PageHeader
         title="Initiatives"
         subtitle="Programs designed to build economic opportunity and community safety."

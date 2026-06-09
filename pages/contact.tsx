@@ -1,10 +1,26 @@
 import PageHeader from '../components/PageHeader'
 import ContactForm from '../components/ContactForm'
 import { Mail, MapPin } from 'lucide-react'
+import SEO from '../components/SEO'
+import JsonLd, { breadcrumbSchema, webPageSchema } from '../components/JsonLd'
 
 export default function ContactPage() {
+  const title = 'Contact AASSociety'
+  const description =
+    'Contact the African American Safety Society for questions, partnerships, press inquiries, or community reporting support.'
+
   return (
     <div className="min-h-screen bg-gtp-bg-0">
+      <SEO title={title} description={description} path="/contact" />
+      <JsonLd
+        data={[
+          webPageSchema({ title, description, path: '/contact' }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Contact', path: '/contact' },
+          ]),
+        ]}
+      />
       <PageHeader
         title="Contact Us"
         subtitle="Have a question, partnership inquiry, or want to report an issue? Reach out."

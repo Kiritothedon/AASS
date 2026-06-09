@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { Shield, Users, BarChart3, ArrowRight, Newspaper } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
+import SEO from '../components/SEO'
+import JsonLd, { breadcrumbSchema, webPageSchema } from '../components/JsonLd'
 
 const values = [
   {
@@ -24,8 +26,22 @@ const values = [
 ]
 
 export default function AboutPage() {
+  const title = 'About AASSociety'
+  const description =
+    'Learn about the African American Safety Society: Black news curation, community incident reporting, and tools for safety, progress, and advocacy.'
+
   return (
     <div className="min-h-screen bg-gtp-bg-0">
+      <SEO title={title} description={description} path="/about" />
+      <JsonLd
+        data={[
+          webPageSchema({ title, description, path: '/about' }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'About', path: '/about' },
+          ]),
+        ]}
+      />
       <PageHeader
         title="About AASS"
         subtitle="Furthering Black progress through business, technology, and community safety."

@@ -1,9 +1,10 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Head from 'next/head'
 import Container from '../../components/Container'
 import { Calendar, Tag, User, ArrowLeft } from 'lucide-react'
+import SEO from '../../components/SEO'
+import JsonLd, { articleSchema, breadcrumbSchema } from '../../components/JsonLd'
 import { getBlogPosts, getBlogPost, getBlogSlugs } from '../../lib/blog'
 
 interface BlogPostPageProps {
@@ -40,16 +41,31 @@ export default function BlogPostPage({
 
   return (
     <>
-      <Head>
-        <title>{post.title} | AASS</title>
-        <meta name="description" content={post.excerpt} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
-        <meta name="twitter:description" content={post.excerpt} />
-      </Head>
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        path={`/blog/${post.slug}`}
+        ogType="article"
+        publishedTime={new Date(post.date).toISOString()}
+        author={post.author}
+        tags={post.tags}
+      />
+      <JsonLd
+        data={[
+          articleSchema({
+            title: post.title,
+            description: post.excerpt,
+            path: `/blog/${post.slug}`,
+            datePublished: post.date,
+            author: post.author,
+          }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Insights', path: '/blog' },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+        ]}
+      />
 
       <div className="min-h-screen bg-primary-black">
         <Container>

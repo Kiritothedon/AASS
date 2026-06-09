@@ -1,7 +1,9 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { ReactNode } from 'react'
+import SEO from '../components/SEO'
+import JsonLd, { articleSchema, breadcrumbSchema } from '../components/JsonLd'
+import { FOUNDER_NAME } from '../lib/seo'
 
 const TITLE = 'The Winnable Demand'
 const DECK =
@@ -45,14 +47,30 @@ function Pull({ children }: { children: ReactNode }) {
 export default function WinnableDemandPage() {
   return (
     <>
-      <Head>
-        <title>{`${TITLE} | AASS`}</title>
-        <meta name="description" content={DECK} />
-        <meta property="og:title" content={`${TITLE} | The AASSociety`} />
-        <meta property="og:description" content={DECK} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <SEO
+        title={TITLE}
+        description={DECK}
+        path="/winnable-demand"
+        ogType="article"
+        publishedTime="2026-06-09T00:00:00.000Z"
+        author={FOUNDER_NAME}
+        tags={['reparations', 'Black America', 'policy', 'education']}
+      />
+      <JsonLd
+        data={[
+          articleSchema({
+            title: TITLE,
+            description: DECK,
+            path: '/winnable-demand',
+            datePublished: '2026-06-09',
+            author: FOUNDER_NAME,
+          }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: TITLE, path: '/winnable-demand' },
+          ]),
+        ]}
+      />
 
       <article className="min-h-screen bg-gtp-bg-0">
         {/* Top accent bar (Pan-African nod) */}

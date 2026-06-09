@@ -1,0 +1,7 @@
+# https://www.aassociety.org/robots.txt
+User-agent: *
+Allow: /
+
+Disallow: /api/
+
+Sitemap: https://www.aassociety.org/sitemap.xml

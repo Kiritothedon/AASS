@@ -13,16 +13,6 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
-  async redirects() {
-    return [
-      { source: '/about', destination: '/#about', permanent: false },
-      { source: '/blog', destination: '/#latest', permanent: false },
-      { source: '/blog/:path*', destination: '/#latest', permanent: false },
-      { source: '/contact', destination: '/#about', permanent: false },
-      { source: '/initiatives', destination: '/', permanent: false },
-      { source: '/software', destination: '/', permanent: false },
-    ]
-  },
 }
 
 const withMDX = require('@next/mdx')({

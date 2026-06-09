@@ -4,6 +4,8 @@ import { ArrowUpRight } from 'lucide-react'
 const quickLinks = [
   { name: 'Headlines', href: '/#latest' },
   { name: 'More Coverage', href: '/#more-coverage' },
+  { name: 'Editorial', href: '/winnable-demand' },
+  { name: 'Insights', href: '/blog' },
   { name: 'Report an Incident', href: '/report' },
   { name: 'Incident Map', href: '/incident-map' },
   { name: 'Software', href: '/software' },

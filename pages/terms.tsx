@@ -1,9 +1,25 @@
 import { GetStaticProps } from 'next'
 import Container from '../components/Container'
+import SEO from '../components/SEO'
+import JsonLd, { breadcrumbSchema, webPageSchema } from '../components/JsonLd'
 
 export default function TermsPage() {
+  const title = 'Terms of Service'
+  const description =
+    'Terms of service for using AASSociety.org, including community reporting, news aggregation, and safety tools.'
+
   return (
     <>
+      <SEO title={title} description={description} path="/terms" />
+      <JsonLd
+        data={[
+          webPageSchema({ title, description, path: '/terms' }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Terms of Service', path: '/terms' },
+          ]),
+        ]}
+      />
       {/* Hero */}
       <section className="section-padding bg-primary-black text-white">
         <Container>

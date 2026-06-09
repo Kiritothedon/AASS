@@ -1,9 +1,25 @@
 import { GetStaticProps } from 'next'
 import Container from '../components/Container'
+import SEO from '../components/SEO'
+import JsonLd, { breadcrumbSchema, webPageSchema } from '../components/JsonLd'
 
 export default function PrivacyPage() {
+  const title = 'Privacy Policy'
+  const description =
+    'Read how the African American Safety Society collects, uses, and protects your information when you use AASSociety.org.'
+
   return (
     <>
+      <SEO title={title} description={description} path="/privacy" />
+      <JsonLd
+        data={[
+          webPageSchema({ title, description, path: '/privacy' }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Privacy Policy', path: '/privacy' },
+          ]),
+        ]}
+      />
       {/* Hero */}
       <section className="section-padding bg-primary-black text-white">
         <Container>

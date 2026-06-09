@@ -2,6 +2,8 @@ import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { ExternalLink, Newspaper, FileText, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
+import SEO from '../components/SEO'
+import JsonLd, { organizationSchema, websiteSchema } from '../components/JsonLd'
 import { fetchNewsArticles, type NewsArticle } from '../lib/news'
 
 interface HomePageProps {
@@ -52,7 +54,7 @@ function Img({ article, className }: { article: NewsArticle; className?: string 
       // eslint-disable-next-line @next/next/no-img-element
       <img
         src={article.imageUrl}
-        alt=""
+        alt={article.title}
         className={`story-image ${className ?? ''}`}
         loading="lazy"
         decoding="async"
@@ -74,6 +76,26 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
 
   return (
     <>
+      <SEO
+        title="African American News & Affairs"
+        description="Daily curated African American news on politics, business, culture, and community safety. Read top headlines, report incidents, and explore original analysis from AASSociety."
+        path="/"
+      />
+      <JsonLd data={[organizationSchema(), websiteSchema()]} />
+
+      {/* ── Site masthead (stable H1 for SEO) ───────────────────────────── */}
+      <section className="bg-gtp-bg-0 border-b border-gtp-border">
+        <div className="container-custom py-5 md:py-6">
+          <h1 className="font-serif text-2xl md:text-3xl font-bold text-primary-white leading-tight">
+            African American News &amp; Affairs
+          </h1>
+          <p className="mt-2 max-w-3xl text-sm md:text-base text-secondary-muted leading-relaxed">
+            Curated headlines on politics, business, culture, and community safety affecting Black America.
+            Updated throughout the day from trusted sources.
+          </p>
+        </div>
+      </section>
+
       {/* ── Featured editorial (above the headlines) ──────────────────── */}
       <section className="bg-gtp-bg-1 border-b border-gtp-border">
         <div className="container-custom">
@@ -142,9 +164,9 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
                       <SourceDot source={featured.source} />
                       <span className="text-[10px] text-secondary-muted/60 ml-auto">{timeAgo(featured.publishedAt)}</span>
                     </div>
-                    <h1 className="font-serif text-xl sm:text-2xl md:text-[1.6rem] font-bold text-primary-white leading-[1.2] tracking-tight group-hover:text-gtp-blue-light transition-colors mb-2">
+                    <h2 className="font-serif text-xl sm:text-2xl md:text-[1.6rem] font-bold text-primary-white leading-[1.2] tracking-tight group-hover:text-gtp-blue-light transition-colors mb-2">
                       {featured.title}
-                    </h1>
+                    </h2>
                     {featured.excerpt && (
                       <p className="text-sm text-secondary-muted leading-relaxed line-clamp-2 hidden sm:block">
                         {featured.excerpt}
@@ -312,6 +334,33 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
           </div>
         </section>
       )}
+
+      {/* ── About (anchor target + SEO content) ─────────────────────────── */}
+      <section id="about" className="bg-gtp-bg-1 border-t border-gtp-border">
+        <div className="container-custom py-10 md:py-12">
+          <div className="max-w-3xl">
+            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary-gold mb-3">
+              About AASSociety
+            </p>
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-white leading-snug mb-4">
+              Black news, incident reporting, and community safety tools
+            </h2>
+            <p className="text-sm md:text-base text-secondary-muted leading-relaxed mb-4">
+              The African American Safety Society (AASS) curates timely reporting on politics, business,
+              culture, and community affairs affecting Black America. We also provide tools to report racial
+              incidents and view community submissions on a public map.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/about" className="btn-primary text-sm">
+                Learn more
+              </Link>
+              <Link href="/report" className="btn-secondary text-sm">
+                Report an incident
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ── Slim footer strip ─────────────────────────────────────────── */}
       <div className="bg-gtp-bg-0 border-t border-gtp-border">

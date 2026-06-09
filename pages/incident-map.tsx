@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import SEO from '../components/SEO'
+import JsonLd, { breadcrumbSchema, webPageSchema } from '../components/JsonLd'
 
 const IncidentMapView = dynamic(() => import('../components/IncidentMapView'), {
   ssr: false,
@@ -12,8 +14,22 @@ const IncidentMapView = dynamic(() => import('../components/IncidentMapView'), {
 })
 
 export default function IncidentMapPage() {
+  const title = 'Racial Incident Map'
+  const description =
+    'Explore community-reported racial incidents on an interactive map. View submissions by city and read reports from across the country.'
+
   return (
     <div className="min-h-screen bg-gtp-bg-0">
+      <SEO title={title} description={description} path="/incident-map" />
+      <JsonLd
+        data={[
+          webPageSchema({ title, description, path: '/incident-map' }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Incident Map', path: '/incident-map' },
+          ]),
+        ]}
+      />
       <div className="container-custom py-6 md:py-8">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
           <div className="max-w-xl">

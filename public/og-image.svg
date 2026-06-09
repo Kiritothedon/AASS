@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="AASS  African American Safety Society">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060910"/>
+      <stop offset="55%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2f5d43"/>
+      <stop offset="50%" stop-color="#C7A740"/>
+      <stop offset="100%" stop-color="#9a3b2c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="8" fill="url(#accent)"/>
+  <rect x="80" y="120" width="72" height="72" rx="14" fill="#161b22" stroke="#C7A740" stroke-width="2"/>
+  <text x="116" y="170" text-anchor="middle" fill="#C7A740" font-family="Georgia, serif" font-size="36" font-weight="700">A</text>
+  <text x="180" y="158" fill="#f0f6fc" font-family="Georgia, serif" font-size="56" font-weight="700">AASS</text>
+  <text x="180" y="198" fill="#8b949e" font-family="Arial, sans-serif" font-size="22" letter-spacing="6">NEWS HUB</text>
+  <text x="80" y="290" fill="#f0f6fc" font-family="Georgia, serif" font-size="42" font-weight="700">African American News &amp; Affairs</text>
+  <text x="80" y="350" fill="#8b949e" font-family="Arial, sans-serif" font-size="26">Politics · Business · Culture · Community Safety</text>
+  <text x="80" y="520" fill="#60a5fa" font-family="Arial, sans-serif" font-size="24">www.aassociety.org</text>
+</svg>
