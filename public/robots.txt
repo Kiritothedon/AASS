@@ -4,4 +4,11 @@ Allow: /
 
 Disallow: /api/
 
+# AI crawlers — allow indexing for discovery (monetization via traffic)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://www.aassociety.org/sitemap.xml

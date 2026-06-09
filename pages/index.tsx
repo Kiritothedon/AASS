@@ -53,9 +53,10 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
   return (
     <>
       <SEO
-        title="Document Incidents. Prove Patterns. Win Demands."
-        description="Report racial incidents, view community submissions on a public map, and read policy analysis on what Black America should demand. AASSociety is a civic safety and advocacy platform."
+        title="Black Community Safety — Report Incidents, Map Patterns, Win Demands"
+        description="AASSociety helps Black Americans report racial incidents and hate crimes, explore community submissions on a public map, and read policy analysis on reparations and winnable demands. Free — no account required."
         path="/"
+        tags={['Black community safety', 'racial incident reporting', 'hate crime map', 'AASSociety']}
       />
       <JsonLd data={[organizationSchema(), websiteSchema()]} />
 
@@ -230,10 +231,57 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
               <Link href="/about" className="btn-secondary text-sm">
                 About AASS
               </Link>
+              <Link href="/blog" className="btn-secondary text-sm">
+                Safety guides &amp; insights
+              </Link>
               <Link href="/report" className="btn-primary text-sm">
                 Report an incident
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO resource strip — internal links + keyword-rich copy */}
+      <section className="bg-gtp-bg-1 border-t border-gtp-border">
+        <div className="container-custom py-8 md:py-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-secondary-muted mb-4">
+            Resources
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              {
+                title: 'How to report a racial incident',
+                href: '/blog/2026-06-10-how-to-report-racial-incident',
+                desc: 'Step-by-step guide to documenting harm in your community.',
+              },
+              {
+                title: 'Black community safety guide',
+                href: '/blog/2026-06-10-black-community-safety-guide',
+                desc: 'Why report, map, and demand change — not just react.',
+              },
+              {
+                title: 'The Winnable Demand',
+                href: '/winnable-demand',
+                desc: 'Policy essay on reparations Black America can actually win.',
+              },
+              {
+                title: 'All insights',
+                href: '/blog',
+                desc: 'Research and analysis from AASSociety.',
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block p-4 rounded-lg border border-gtp-border bg-gtp-bg-2 hover:border-primary-gold/40 transition-colors"
+              >
+                <h3 className="text-sm font-bold text-primary-white font-serif leading-snug">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-xs text-secondary-muted leading-relaxed">{item.desc}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

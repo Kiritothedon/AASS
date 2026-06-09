@@ -4,7 +4,7 @@ import Container from '../../components/Container'
 import PageHeader from '../../components/PageHeader'
 import BlogCard from '../../components/BlogCard'
 import SEO from '../../components/SEO'
-import JsonLd, { breadcrumbSchema, webPageSchema } from '../../components/JsonLd'
+import JsonLd, { breadcrumbSchema, itemListSchema, webPageSchema } from '../../components/JsonLd'
 import { getBlogPosts } from '../../lib/blog'
 
 interface BlogPost {
@@ -22,9 +22,9 @@ interface BlogPageProps {
 }
 
 export default function BlogPage({ posts }: BlogPageProps) {
-  const title = 'Insights & Analysis'
+  const title = 'Insights on Black Community Safety & Advocacy'
   const description =
-    'Research, analysis, and commentary from the African American Safety Society on community safety, technology, and Black progress.'
+    'Research and analysis from AASSociety on racial incident reporting, Black community safety, hate crime documentation, technology, and policy demands worth fighting for.'
 
   return (
     <div className="min-h-screen bg-primary-black">
@@ -36,6 +36,14 @@ export default function BlogPage({ posts }: BlogPageProps) {
             { name: 'Home', path: '/' },
             { name: 'Insights', path: '/blog' },
           ]),
+          itemListSchema({
+            name: 'AASS Insights',
+            description,
+            items: posts.map((post) => ({
+              name: post.title,
+              path: `/blog/${post.slug}`,
+            })),
+          }),
         ]}
       />
       <PageHeader

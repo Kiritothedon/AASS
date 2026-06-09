@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import {
   DEFAULT_DESCRIPTION,
+  DEFAULT_KEYWORDS,
   DEFAULT_OG_IMAGE,
   DEFAULT_TITLE,
   SITE_FULL_NAME,
   SITE_NAME,
-  SITE_URL,
   TWITTER_HANDLE,
   absoluteUrl,
   pageTitle,
@@ -26,14 +26,7 @@ export default function SEO({
 }: SEOProps) {
   const resolvedTitle = pageTitle(title)
   const canonical = absoluteUrl(path)
-  const keywords = [
-    'African American news',
-    'Black news',
-    'Black community safety',
-    'AASSociety',
-    'racial incidents',
-    ...tags,
-  ].join(', ')
+  const keywords = [...DEFAULT_KEYWORDS, ...tags].join(', ')
 
   return (
     <Head>
@@ -51,6 +44,8 @@ export default function SEO({
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={canonical} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={`${SITE_NAME} — ${SITE_FULL_NAME}`} />
       <meta property="og:locale" content="en_US" />
 
@@ -66,6 +61,7 @@ export default function SEO({
 
       <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       <link rel="apple-touch-icon" href="/favicon.svg" />
+      <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} Insights RSS`} href={absoluteUrl('/feed.xml')} />
       <meta name="theme-color" content="#060910" />
     </Head>
   )

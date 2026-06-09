@@ -8,6 +8,7 @@ const navigation = [
   { name: 'Report', href: '/report' },
   { name: 'Map', href: '/incident-map' },
   { name: 'Essay', href: '/winnable-demand' },
+  { name: 'Insights', href: '/blog' },
   { name: 'News', href: '/#context' },
   { name: 'About', href: '/about' },
 ]

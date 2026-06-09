@@ -26,9 +26,9 @@ const values = [
 ]
 
 export default function AboutPage() {
-  const title = 'About AASSociety'
+  const title = 'About the African American Safety Society'
   const description =
-    'Learn about the African American Safety Society: Black news curation, community incident reporting, and tools for safety, progress, and advocacy.'
+    'AASSociety (AASS) helps Black Americans report racial incidents, map community harm, and read policy analysis on safety and winnable demands. Learn about our mission, tools, and founder.'
 
   return (
     <div className="min-h-screen bg-gtp-bg-0">

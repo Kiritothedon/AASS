@@ -6,6 +6,7 @@ import { Calendar, Tag, User, ArrowLeft } from 'lucide-react'
 import SEO from '../../components/SEO'
 import JsonLd, { articleSchema, breadcrumbSchema } from '../../components/JsonLd'
 import { getBlogPosts, getBlogPost, getBlogSlugs } from '../../lib/blog'
+import { renderMarkdown } from '../../lib/markdown'
 
 interface BlogPostPageProps {
   post: {
@@ -111,11 +112,10 @@ export default function BlogPostPage({
 
             {/* Article Content */}
             <div className="max-w-4xl mx-auto">
-              <div className="prose prose-invert prose-lg max-w-none">
-                <div className="text-secondary-muted leading-relaxed whitespace-pre-wrap">
-                  {post.content}
-                </div>
-              </div>
+              <div
+                className="prose prose-invert prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }}
+              />
             </div>
 
             {/* Related Posts */}

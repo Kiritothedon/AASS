@@ -48,13 +48,13 @@ export default function WinnableDemandPage() {
   return (
     <>
       <SEO
-        title={TITLE}
-        description={DECK}
+        title="The Winnable Demand — Reparations Black America Can Actually Win"
+        description="Why descendants of American slavery should retire the open-ended reparations fight and demand free college plus tax relief — a policy essay by De'Mondre Zimmerman for AASSociety."
         path="/winnable-demand"
         ogType="article"
         publishedTime="2026-06-09T00:00:00.000Z"
         author={FOUNDER_NAME}
-        tags={['reparations', 'Black America', 'policy', 'education']}
+        tags={['reparations', 'Black America', 'free college', 'tax relief', 'policy essay', 'AASSociety']}
       />
       <JsonLd
         data={[

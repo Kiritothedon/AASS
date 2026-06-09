@@ -54,9 +54,9 @@ export function websiteSchema() {
       logo: DEFAULT_OG_IMAGE,
     },
     potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/#context`,
-      'query-input': 'required name=search_term_string',
+      '@type': 'ReportAction',
+      name: 'Report a racial incident',
+      target: absoluteUrl('/report'),
     },
   }
 }
@@ -113,6 +113,44 @@ export function breadcrumbSchema(items: Array<{ name: string; path: string }>) {
       position: index + 1,
       name: item.name,
       item: absoluteUrl(item.path),
+    })),
+  }
+}
+
+export function faqSchema(items: Array<{ question: string; answer: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  }
+}
+
+export function itemListSchema({
+  name,
+  description,
+  items,
+}: {
+  name: string
+  description: string
+  items: Array<{ name: string; path: string }>
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    description,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: absoluteUrl(item.path),
     })),
   }
 }
