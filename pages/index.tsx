@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import { ExternalLink, Newspaper } from 'lucide-react'
+import { ExternalLink, Newspaper, FileText, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { fetchNewsArticles, type NewsArticle } from '../lib/news'
 
@@ -74,6 +74,42 @@ export default function HomePage({ articles, fetchedAt }: HomePageProps) {
 
   return (
     <>
+      {/* ── Featured editorial (above the headlines) ──────────────────── */}
+      <section className="bg-gtp-bg-1 border-b border-gtp-border">
+        <div className="container-custom">
+          <Link
+            href="/winnable-demand"
+            className="group block relative overflow-hidden rounded-none sm:rounded-lg my-3 sm:my-4 border border-gtp-border bg-gtp-bg-2 hover:border-primary-gold/50 transition-colors"
+          >
+            <span className="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-[#2f5d43] via-primary-gold to-[#9a3b2c]" />
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 px-5 sm:px-6 py-4 sm:py-5">
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="text-[9px] font-black uppercase tracking-[0.18em] px-1.5 py-0.5 bg-primary-gold text-primary-black">
+                  Editorial
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-secondary-muted">
+                  <FileText className="h-3 w-3 text-primary-gold" />
+                  AASSociety Op-Ed
+                </span>
+              </div>
+              <div className="min-w-0 flex-1">
+                <h2 className="font-serif text-base sm:text-lg md:text-xl font-bold text-primary-white leading-snug group-hover:text-gtp-blue-light transition-colors">
+                  The Winnable Demand: free college and tax relief for the descendants of American slavery
+                </h2>
+                <p className="mt-1 text-xs sm:text-sm text-secondary-muted line-clamp-2">
+                  Why Black America should retire the open-ended fight for reparations and force a narrower question the
+                  country cannot answer honestly and still say no.
+                </p>
+              </div>
+              <span className="inline-flex items-center gap-1.5 shrink-0 text-xs font-semibold text-primary-gold group-hover:gap-2.5 transition-all">
+                Read the essay
+                <ArrowRight className="h-3.5 w-3.5" />
+              </span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* ── Main editorial grid ───────────────────────────────────────── */}
       <section id="latest" className="bg-gtp-bg-0">
         <div className="container-custom">
