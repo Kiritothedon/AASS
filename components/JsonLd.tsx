@@ -5,6 +5,7 @@ import {
   FOUNDER_URL,
   SITE_FULL_NAME,
   SITE_NAME,
+  SITE_TAGLINE,
   SITE_URL,
   absoluteUrl,
 } from '../lib/seo'
@@ -25,18 +26,42 @@ export default function JsonLd({ data }: JsonLdProps) {
 export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    // NGO is a subtype of Organization; declaring both helps Google understand
+    // AASS as a nonprofit advocacy entity rather than a generic company.
+    '@type': ['Organization', 'NGO'],
+    '@id': `${SITE_URL}/#organization`,
     name: SITE_FULL_NAME,
-    alternateName: SITE_NAME,
+    alternateName: [SITE_NAME, 'AASSociety'],
     url: SITE_URL,
-    logo: DEFAULT_OG_IMAGE,
+    logo: {
+      '@type': 'ImageObject',
+      url: DEFAULT_OG_IMAGE,
+    },
+    image: DEFAULT_OG_IMAGE,
+    slogan: SITE_TAGLINE,
+    description: DEFAULT_DESCRIPTION,
     founder: {
       '@type': 'Person',
       name: FOUNDER_NAME,
       url: FOUNDER_URL,
     },
+    areaServed: {
+      '@type': 'Country',
+      name: 'United States',
+    },
+    knowsAbout: [
+      'Racial incident reporting',
+      'Hate crime documentation',
+      'Civil rights advocacy',
+      'Reparations policy',
+      'Black community safety',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'support',
+      url: absoluteUrl('/contact'),
+    },
     sameAs: [FOUNDER_URL],
-    description: DEFAULT_DESCRIPTION,
   }
 }
 
